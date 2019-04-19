@@ -69,8 +69,6 @@
 </style>
 </head>
 <body>
-
-
 <script type="text/javascript">
 $(document).ready(function(){
 	$("#mem_id").keydown(function(){
@@ -178,7 +176,7 @@ $(document).ready(function(){
         <div class="row">
           <div class="input-field col s12 " >
             <p class="margin center-align medium-small" >         
-            <a href="#">  ID찾기 및 비밀번호 재설정</a><br>            
+            <a href="../member/findId">  ID찾기 및 비밀번호 재설정</a><br>            
           &nbsp;또는&nbsp;<a href="../member/register">회원가입</a></p>
           </div>          
         </div>

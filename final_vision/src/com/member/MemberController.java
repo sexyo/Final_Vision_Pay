@@ -10,16 +10,16 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
-import com.util.HangulConversion;
 import com.vo.MemberVO;
+import org.json.simple.JSONObject;
+import net.nurigo.java_sdk.api.Message;
+import net.nurigo.java_sdk.exceptions.CoolsmsException;
 
 
 @Controller
@@ -167,6 +167,42 @@ public class MemberController {
 	@GetMapping("rewards")
 	public String rewards(@RequestParam Map<String, Object> pMap, HttpServletRequest req, Model model) {
 		path = "rewards/rewards";
+		return path;
+	}
+	@ResponseBody
+	@RequestMapping(value = "cert", method = {RequestMethod.GET,RequestMethod.POST})
+	public String ExampleSend(@RequestParam Map<String, Object> pMap, HttpServletRequest req, Model model){
+		int result = 0;
+		String api_key = "NCSCONUE69XGPXDK";
+		String api_secret = "KBPIIIIIP54LLTL7D7VT3XLL9AYO0PMZ";
+		Message coolsms = new Message(api_key, api_secret);
+		int cert_num = (int)(Math.random()*1000000)+1;
+		String phone_num = (String)pMap.get("phone_num");
+		HashMap<String, String> params = new HashMap<String, String>();
+		params.put("to", phone_num);
+		params.put("from", "01092221143");
+		params.put("type", "SMS");
+		params.put("text", "인증번호는 ["+String.valueOf(cert_num)+"] 입니다. -VISIONPAY-");
+		params.put("app_version", "test app 1.2"); // application name and version
+
+		try {
+		  JSONObject obj = (JSONObject) coolsms.send(params);
+		  System.out.println(obj.toString());
+		} catch (CoolsmsException e) {
+		  System.out.println(e.getMessage());
+		  System.out.println(e.getCode());
+		}
+		logger.info(cert_num);
+		return String.valueOf(cert_num);
+	}
+	@GetMapping("findId")
+	public String findId(@RequestParam Map<String, Object> pMap, HttpServletRequest req, Model model) {
+		path = "member/findId";
+		return path;
+	}
+	@GetMapping("findPw")
+	public String findPw(@RequestParam Map<String, Object> pMap, HttpServletRequest req, Model model) {
+		path = "member/findPw";
 		return path;
 	}
 

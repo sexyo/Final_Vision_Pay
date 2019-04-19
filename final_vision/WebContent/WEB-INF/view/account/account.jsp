@@ -98,7 +98,6 @@ $(document).ready(function(){
 });
   
 </script>
-
 	<nav class="navbar navbar-default navbar-fixed-top">
 		<div class="container-fluid">
 			<br>
@@ -261,7 +260,6 @@ $(document).ready(function(){
 		</div>
 		<hr>
 	</div>
-<!-- Modal -->
 
 
 			
