@@ -8,8 +8,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="C:/vision_final_work/import/jar/jsp-api.jar"/>
-	<classpathentry kind="lib" path="C:/vision_final_work/import/jar/ojdbc6.jar"/>
-	<classpathentry kind="lib" path="C:/vision_final_work/import/jar/servlet-api.jar"/>
+	<classpathentry kind="lib" path="C:/vision_final_git/Final_Vision_Pay/import/jar/jsp-api.jar"/>
+	<classpathentry kind="lib" path="C:/vision_final_git/Final_Vision_Pay/import/jar/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="C:/vision_final_git/Final_Vision_Pay/import/jar/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
