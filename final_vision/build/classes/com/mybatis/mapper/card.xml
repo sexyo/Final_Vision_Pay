@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cardMapper">
+
+	<resultMap type="java.util.Map" id="r_list">
+    <result column="r_list" property="r_list"/>
+    </resultMap>
+<insert id="cardAdd" parameterType="map" statementType="CALLABLE">
+		{call proc_cardAdd(#{P_CARD_NUM,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{P_MEM_ID,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{P_CARD_PAY_PW,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{RESULT,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
+						)}
+</insert>
+
+<select id="cardList" statementType="CALLABLE" parameterType="com.vo.CardVO">
+{call proc_cardList(#{p_mem_id, mode=IN }, 
+#{r_list, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=r_list})} 
+</select>
+
+<select id="cardAllList" parameterType="com.vo.CardVO" resultType="map">
+ select max(bin_company) as bin_company,max(cd.card_num) as card_num, max(bin_name) as bin_name,max(mem_id) as mem_id, sum(ph_price) as ph_price, max(pay_date) as pay_date  from pay_history ph, payment pm, creditcard cd, cardbin cb
+ where ph.pay_num = pm.pay_num
+ and cd.bin = cb.bin
+ and pm.card_num = cd.card_num
+ and  to_date(pm.pay_date,'yy/mm/dd') >= to_date(substr(to_date(sysdate, 'yy/MM/DD'),0,6)||01)
+ and mem_id = #{mem_id}
+group by bin_company
+</select>
+
+<select id="allCard" parameterType="com.vo.CardVO" resultType="map">
+select mem_id ,card_num, bin_company, bin_name 
+from creditcard, cardbin 
+where CREDITCARD.bin=cardbin.bin
+and mem_id = #{mem_id}   
+</select>
+
+
+
+<select id="detail_card" parameterType="com.vo.CardVO" resultType="map">
+select pm.pay_date, pm.pay_time, ph.ph_price, s.store_num, s.store_name 
+from payment pm, pay_history ph,store s
+where pm.pay_num = ph.pay_num 
+and pm.store_num = s.store_num
+and  to_date(pay_date,'yy/mm/dd') >= to_date(substr(to_date(sysdate, 'yy/MM/DD'),0,6)||01)
+and card_num = #{card_num}
+order by pay_date desc, pay_time   
+</select>
+
+
+</mapper>

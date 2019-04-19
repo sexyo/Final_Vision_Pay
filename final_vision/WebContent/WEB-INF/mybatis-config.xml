@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias alias="memberVO" type="com.vo.MemberVO"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="com/mybatis/mapper/account.xml"/>
+		<mapper resource="com/mybatis/mapper/card.xml"/>
+		<mapper resource="com/mybatis/mapper/member.xml"/>
+		<mapper resource="com/mybatis/mapper/membership.xml"/>
+		<mapper resource="com/mybatis/mapper/plan.xml"/>
+		<mapper resource="com/mybatis/mapper/recommend.xml"/>
+		<mapper resource="com/mybatis/mapper/rewards.xml"/>
+	</mappers>
+</configuration>

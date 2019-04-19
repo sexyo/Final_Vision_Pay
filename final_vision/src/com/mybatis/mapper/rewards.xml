@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="rewardsMapper">
+	<select id="myPoint" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select vi_point from vision_point where mem_id = #{mem_id} 
+	</select>
+
+
+	<select id="couponShop" resultType="map">
+		select coupon_name, coupon_point, coupon_num from coupon
+	</select>
+	
+	<resultMap type="java.util.Map" id="r_store_cnt">
+		<result property="r_store_cnt" column="r_store_cnt"/>
+	</resultMap>
+	<select id="exCoupon"  statementType="CALLABLE" parameterType="Map" >
+		{call PROC_EXCOUPON(#{mem_id,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
+					   , #{coupon_num,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
+  					   , #{RESULT, mode=OUT, jdbcType=INTEGER, javaType=java.lang.Integer}
+  					  )}						
+	</select>
+		<select id="couponInven" resultType="map">
+		    select vp.mem_id, issue_date, last_date,vi_point,coupon_name
+     from vision_point vp, coupon_history ch, coupon c
+     where VP.MEM_ID = CH.MEM_ID
+     and C.COUPON_NUM = CH.COUPON_NUM
+     and vp.mem_id = #{mem_id}
+	</select>
+
+</mapper>

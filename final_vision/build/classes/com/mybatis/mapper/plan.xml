@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="planMapper">
+
+	
+	
+	<resultMap type="java.util.Map" id="r_month">
+		<result property="r_month" column="r_month"/>
+	</resultMap>
+	<select id="spendingMonth"  statementType="CALLABLE" parameterType="com.vo.PlanVO" >
+		{call proc_month(#{mem_id,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
+  					   , #{r_month, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=r_month}
+                           )
+						}
+	</select>
+
+	<resultMap type="java.util.Map" id="r_cate">
+		<result property="r_cate" column="r_cate"/>
+	</resultMap>
+	<select id="spendingCategory"  statementType="CALLABLE" parameterType="com.vo.PlanVO" >
+		{call proc_spendingCategory(#{mem_id,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
+  					   , #{r_cate, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=r_cate}
+                           )
+						}
+	</select>
+	
+	
+	<resultMap type="java.util.Map" id="r_store_sum">
+		<result property="r_store_sum" column="r_store_sum"/>
+	</resultMap>
+	<resultMap type="java.util.Map" id="r_store_cnt">
+		<result property="r_store_cnt" column="r_store_cnt"/>
+	</resultMap>
+	<select id="spendingStore"  statementType="CALLABLE" parameterType="com.vo.PlanVO" >
+		{call proc_spendingStore(#{mem_id,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
+					   , #{p_date,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
+  					   , #{r_store_sum, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=r_store_sum}
+  					   , #{r_store_cnt, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=r_store_cnt}
+                           )
+						}
+	</select>
+
+	<resultMap type="java.util.Map" id="r_week">
+		<result property="r_week" column="r_week"/>
+	</resultMap>
+	<select id="total_Week"  statementType="CALLABLE" parameterType="com.vo.PlanVO" >
+		{call proc_total_Week(#{mem_id,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
+  					   , #{r_week, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=r_week}
+                           )
+						}
+	</select>
+
+	<resultMap type="java.util.Map" id="r_day">
+		<result property="r_day" column="r_day"/>
+	</resultMap>
+	<select id="total_Day"  statementType="CALLABLE" parameterType="com.vo.PlanVO" >
+		{call proc_total_Day(#{mem_id,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
+  					   , #{r_day, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=r_day}
+                           )
+						}
+	</select>
+
+</mapper>

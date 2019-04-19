@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="accountMapper">
+	<select id="accountList" parameterType="com.vo.AccountVO" resultType="map">
+		select acc_num, acc_bank, acc_name, acc_blance from account where mem_id = #{mem_id}
+	</select>
+	<insert id="proc_accountAdd" parameterType="map" statementType="CALLABLE">
+		{call proc_accountAdd(#{p_mem_id,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{p_acc_name,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{p_acc_bank,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{p_acc_num,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{p_wallet,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{result,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
+						)}
+	</insert>
+	<select id="accTransfer" parameterType="map" statementType="CALLABLE">
+		{call proc_accTransfer(#{hash,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{acc_to,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{acc_from,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{acc_price,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{acc_bank,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{result,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
+						)}
+	</select>
+	<select id="accountList2" parameterType="map" resultType="map">
+	select ah.acc_balance, ah.acc_num, ah.acc_rownum, ah.acc_date, a.acc_name, a.acc_bank from acc_history ah, account a 
+	where ah.acc_rownum in(select max(to_number(acc_rownum)) from acc_history group by acc_num) 
+	and a.mem_id=#{mem_id} and ah.acc_num = a.acc_num order by ah.acc_balance desc
+	</select>
+	<select id="acchistory12" parameterType="map" resultType="map">
+	select acc_balance, acc_date, acc_rownum, acc_time, nvl(acc_content,' ') as acc_content, acc_price, acc_num, decode(acc_inout,0,'입금',1,'출금',2,' ') as acc_inout from acc_history
+	where to_date(acc_date,'yyyy/mm/dd') > (select to_char(add_months(sysdate,-12),'yyyy/mm/dd') from dual) 
+	and acc_num= #{acc_num}
+	order by to_number(acc_rownum) desc
+	</select>
+	<select id="acchistory6" parameterType="map" resultType="map">
+	select acc_balance, acc_date, acc_rownum, acc_time, nvl(acc_content,' ') as acc_content, acc_price, acc_num, decode(acc_inout,0,'입금',1,'출금',2,' ') as acc_inout from acc_history
+	where to_date(acc_date,'yyyy/mm/dd') > (select to_char(add_months(sysdate,-6),'yyyy/mm/dd') from dual) 
+	and acc_num= #{acc_num}
+	order by to_number(acc_rownum) desc
+	</select>
+	<select id="acchistory3" parameterType="map" resultType="map">
+	select acc_balance, acc_date, acc_rownum, acc_time, nvl(acc_content,' ') as acc_content, acc_price, acc_num, decode(acc_inout,0,'입금',1,'출금',2,' ') as acc_inout from acc_history 
+	where to_date(acc_date,'yyyy/mm/dd') > (select to_char(add_months(sysdate,-3),'yyyy/mm/dd') from dual) 
+	and acc_num= #{acc_num}
+	order by to_number(acc_rownum) desc
+	</select>
+	<select id="acchistory1" parameterType="map" resultType="map">
+	select acc_balance, acc_date, acc_rownum, acc_time, nvl(acc_content,' ') as acc_content, acc_price, acc_num, decode(acc_inout,0,'입금',1,'출금',2,' ') as acc_inout from acc_history
+	where to_date(acc_date,'yyyy/mm/dd') > (select to_char(add_months(sysdate,-1),'yyyy/mm/dd') from dual) 
+	and acc_num= #{acc_num}
+	order by to_number(acc_rownum) desc
+	</select>
+	<select id="acchistoryToday" parameterType="map" resultType="map">
+	select acc_balance, acc_date, acc_rownum, acc_time, nvl(acc_content,' ') as acc_content, acc_price, acc_num, decode(acc_inout,0,'입금',1,'출금',2,' ') as acc_inout from acc_history
+	where to_date(acc_date,'yyyy/mm/dd') = (select to_char(sysdate,'yyyy/mm/dd') from dual) 
+	and acc_num= #{acc_num}
+	order by to_number(acc_rownum) desc
+	</select>
+	<select id="acchistory3day" parameterType="map" resultType="map">
+    select acc_balance, acc_date, acc_rownum, acc_time, nvl(acc_content,' ') as acc_content, acc_price, acc_num, decode(acc_inout,0,'입금',1,'출금',2,' ') as acc_inout from acc_history
+    where to_date(acc_date,'yyyy/mm/dd') >= (select to_char(sysdate-3,'yyyy/mm/dd') from dual) 
+    and acc_num= #{acc_num}
+    order by to_number(acc_rownum) desc
+	</select>
+	
+
+
+
+
+	
+
+</mapper>
