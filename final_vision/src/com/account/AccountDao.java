@@ -73,6 +73,12 @@ public class AccountDao {
 	public void schedule(String hash) {
 		sqlSessionTemplate.selectOne("accTransfer",hash);
 	}
+	public List<Map<String, Object>> accountList3(String mem_id) {
+		logger.info("accountList3 호출 성공");
+		List<Map<String,Object>> accountList = new ArrayList<Map<String,Object>>();
+		accountList = sqlSessionTemplate.selectList("accountList3",mem_id);
+		return accountList;
+	}
 
 	
 }
