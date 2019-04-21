@@ -9,8 +9,6 @@
 	<title>아이디 찾기</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel="apple-touch-icon-precomposed" href='https://sslimage.gmarket.co.kr/_Net/apple-touch-icon-precomposed.png'/>
-    <link rel="apple-touch-icon" href='https://sslimage.gmarket.co.kr/_Net/apple-touch-icon.png'/>
 	
 	<script type='text/javascript' src='https://www.gmarket.co.kr/challenge/neo_include/favicon_net.js'></script>
 	<script type="text/javascript" src="https://script.gmkt.kr/_Net/js/json2.js"></script>
