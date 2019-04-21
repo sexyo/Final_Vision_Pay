@@ -10,6 +10,6 @@ public class Wellet {
 		this.info = pMap;
 		this.hashList = hashList;
 	}
-	
+	 
 }
 	
