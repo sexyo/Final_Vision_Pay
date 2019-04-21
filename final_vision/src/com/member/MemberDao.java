@@ -14,11 +14,12 @@ import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.card.CardDao;
 import com.util.MyBatisCommonFactory;
 import com.vo.MemberVO;
 
 public class MemberDao {
-	Logger logger = Logger.getLogger(MemberDao.class);
+	Logger logger = Logger.getLogger(CardDao.class);
 	private SqlSessionTemplate sqlSessionTemplate = null;
 	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;

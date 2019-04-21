@@ -75,7 +75,7 @@ $(document).ready(function(){
 		if (window.event.keyCode == 13) {
 	        $.ajax({
 	            type: 'POST',
-	            url: 'main',
+	            url: 'com',
 	            data: {
 	                "mem_id" : $('#mem_id').val(),
 	                "mem_pw" : $('#mem_pw').val(),
@@ -96,7 +96,7 @@ $(document).ready(function(){
 		if (window.event.keyCode == 13) {
 	        $.ajax({
 	            type: 'POST',
-	            url: 'main',
+	            url: 'com',
 	            data: {
 	                "mem_id" : $('#mem_id').val(),
 	                "mem_pw" : $('#mem_pw').val(),

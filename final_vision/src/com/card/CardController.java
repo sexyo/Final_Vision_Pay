@@ -15,11 +15,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.vo.CardVO;
 
@@ -91,6 +91,24 @@ public class CardController {
 		int result = cardLogic.cardAdd(pMap);
 		logger.info(result);
 		return result;
+	}
+	@ResponseBody
+	@PostMapping(value = "visionCardAdd")
+	public int visionCardAdd(@ModelAttribute CardVO cardVO,@RequestParam Map<String,Object>pMap, HttpServletRequest req) throws ServletException, IOException {
+		logger.info("visionCardAdd 호출 성공");
+		HttpSession session = req.getSession();
+		String mem_id = (String) session.getAttribute("mem_id");
+		logger.info("pw : "+pMap.get("p_pw")+"p_bin : "+pMap.get("p_bin")+"p_acc_num : "+pMap.get("p_acc_num")+
+					"p_vi_day : "+pMap.get("p_vi_day"));
+		pMap.put("p_mem_id", mem_id);
+		int result = cardLogic.visionCardAdd(pMap);
+		logger.info(result);
+		return result;
+	}
+	@PostMapping("recommendCard")
+	public String crew(@RequestParam Map<String,Object> pMap, HttpServletRequest req,	Model model) {
+		return "card/recommendCard";
+		
 	}
 
 }

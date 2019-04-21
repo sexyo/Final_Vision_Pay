@@ -79,12 +79,14 @@ img#plax-sphere-3 {
 		String r_account = null;
 		String r_point = null;
 		String r_mship = null;
+		String r_coupon = null;
 		if (session.getAttribute("mem_id") != null) {
 			mem_id = (String) session.getAttribute("mem_id");
 			r_card = (String) request.getAttribute("r_card");
 			r_account = (String) request.getAttribute("r_account");
 			r_point = (String) request.getAttribute("r_point");
 			r_mship = (String) request.getAttribute("r_mship");
+			r_coupon = (String) request.getAttribute("r_coupon");
 	%>
 	
 	<script type="text/javascript">
@@ -157,10 +159,10 @@ img#plax-sphere-3 {
 								<li><a href="../plan/planList"><img
 										src="/images/planner.png" id="imagepreview"
 										style="width: 30px; height: 20px">&nbsp;&nbsp;플래너</a></li>
-								<li><a href="#"><img
+								<li><a href="../recommend/myRecommendCard"><img
 										src="/images/cardRecommend.png" id="imagepreview"
 										style="width: 30px; height: 20px">&nbsp;&nbsp;카드 추천</a></li>
-								<li><a href="#"><img src="/images/reward.png"
+								<li><a href="../rewards/couponInven"><img src="/images/reward.png"
 										id="imagepreview" style="width: 30px; height: 20px">&nbsp;&nbsp;리워즈</a></li>
 							</ul>
 						</li>
@@ -236,12 +238,27 @@ img#plax-sphere-3 {
 					</div>
 					<br>
 					<!-- 캐러셀 끝 -->
+<!-- 			<div class="col-md-4"> -->
+<!-- 				<p> -->
+<!-- 					<a href="../recommend/myRecommendCard"> -->
+<!-- 						<button type="button" class="btn btn-info btn-lg" -->
+<!-- 							data-toggle="modal" data-target="#myModal"   -->
+<!-- 							style="background-color: white; color: black; border-color: white;"> -->
+<!-- 							추천 카드</button> -->
+<!-- 					</a> -->
+<!-- 				</p> -->
+<!-- 			</div> -->
+<!-- 				<div class="col-md-4"> -->
+<!-- 					<h2>지갑</h2> -->
 					<p>
-						<a>
-							<button type="button" class="btn btn-info btn-lg"
-								data-toggle="modal" data-target="#myModal"
-								style="background-color: white; color: black; border-color: white;">
-								추천 카드</button>
+						<a class="btn btn-default btn-lg" style="border-color: white; width:20%;"
+							href="../card/card"><%=r_card%><br>카드</a> <a>|</a> <a
+							class="btn btn-default btn-lg" style="border-color: white; width:20%;"
+							href="../account/account"><%=r_account%><br>계좌</a>
+						<a>|</a> <a class="btn btn-default btn-lg"
+							style="border-color: white; width:25%;" href="../membership/mshipList"><%=r_mship%><br>멤버쉽</a>
+						<a>|</a> <a class="btn btn-default btn-lg"
+							style="border-color: white; width:20%;" href="../rewards/couponInven"><%=r_coupon%><br>쿠폰
 						</a>
 					</p>
 				</div>

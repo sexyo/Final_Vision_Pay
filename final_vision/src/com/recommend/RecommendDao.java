@@ -24,5 +24,16 @@ public class RecommendDao {
 	public void setSqlSessionTemplate(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate = sqlSessionTemplate;
 	}
+	public List<Map<String, Object>> myRecommendCard(String mem_id) {
+		logger.info("myRecommendCard 호출 성공");
+		Map<String,Object> pMap = new HashMap<String,Object>();
+		pMap.put("mem_id", mem_id);
+		List<Map<String, Object>> recommendList = new ArrayList<Map<String, Object>>();
+		sqlSessionTemplate.selectList("myRecommendCard",pMap);
+		recommendList = (List<Map<String, Object>>)pMap.get("rec_card");
+		logger.info(recommendList.size());
+		//logger.info(recommendList.get(0).get("rec_card"));
+		return recommendList;
+	}
 	
 }

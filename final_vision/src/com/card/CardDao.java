@@ -65,6 +65,14 @@ public class CardDao {
 		logger.info(detail_card);
 		return detail_card;
 	}
+	public int visionCardAdd(Map<String, Object> pMap) {
+		logger.info("visionCardAdd 호출 성공");
+		int r_result = 0 ;
+		sqlSessionTemplate.selectOne("visionCardAdd",pMap); 
+		r_result = (Integer)pMap.get("r_result");
+		logger.info("r_result"+r_result);
+		return r_result;
+	}
 
 
 }
