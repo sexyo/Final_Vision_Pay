@@ -52,7 +52,7 @@
 	$(document).ready(function() {
 
 		var chart1 = new CanvasJS.Chart("day_sum", {
-			width: $(window).width(),
+			width: "425",
 			height: "250",
 			animationEnabled : true,
 			theme : "light2", // "light1", "light2", "dark1", "dark2"
@@ -73,7 +73,7 @@
 			} ]
 		});
 		var chart2 = new CanvasJS.Chart("day_cnt", {
-			width: $(window).width(),
+			width: "425",
 			height: "250",
 			animationEnabled : true,
 			theme : "light2", // "light1", "light2", "dark1", "dark2"
@@ -86,7 +86,7 @@
 			data : [ {
 				type : "column",
 				showInLegend : true,
-				legendMarkerColor : "grey",
+				legendMarkerColor : "grey",f
 				yValueFormatString : "##0 건",
 				legendText : "건수 기준",
 				dataPoints :

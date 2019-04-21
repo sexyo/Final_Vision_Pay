@@ -39,11 +39,28 @@
 	<select id="check_id" parameterType="java.lang.String" resultType="java.lang.Integer">
 		select count(*) from member where mem_id=#{id}
 	</select>
+	<select id="cert" parameterType="map" resultType="java.lang.Integer">
+		select count(mem_id) from member where mem_name =#{mem_name} and mem_phone = #{mem_phone}
+	</select>
+	<select id="findId" parameterType="map" resultType="java.lang.String">
+		select mem_id from member where mem_name =#{mem_name} and mem_phone = #{mem_phone}
+	</select>
 	<select id="main_count" parameterType="map" statementType="CALLABLE">
 		{call proc_main_count(#{P_MEM_ID,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
 						 ,#{R_CARD,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
 						 ,#{R_ACCOUNT,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
 						 ,#{R_POINT,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
+						)}
+	</select>
+	<select id="findPw_idcheck" parameterType="map" statementType="CALLABLE">
+		{call proc_findPw_idcheck(#{mem_id,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{result,mode=OUT,jdbcType=VARCHAR,javaType=java.lang.String}
+						)}
+	</select>	
+	<select id="proc_pwChange" parameterType="map" statementType="CALLABLE">
+		{call proc_pwChange(#{p_mem_id,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String},
+						  #{P_MEM_PW,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String},
+						  #{result,mode=OUT,jdbcType=VARCHAR,javaType=java.lang.Integer}
 						)}
 	</select>	
 	

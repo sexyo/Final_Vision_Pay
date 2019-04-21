@@ -80,7 +80,7 @@ $(document).ready(function(){
 	 
 
 		var chart1 = new CanvasJS.Chart("week_sum", {
-			width: $(window).width(),
+			width: "455",
 			height: "250",
 			animationEnabled : true,
 			theme : "light3", // "light1", "light2", "dark1", "dark2"
@@ -101,7 +101,7 @@ $(document).ready(function(){
 			} ]
 	});
 	var chart2 = new CanvasJS.Chart("week_cnt", { 
-		width: $(window).width(),
+		width: "455",
 		height: "250",
 		animationEnabled: true,
 		theme: "light3", // "light1", "light2", "dark1", "dark2"

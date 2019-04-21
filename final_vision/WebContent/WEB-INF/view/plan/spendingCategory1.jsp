@@ -171,7 +171,7 @@
 $(document).ready(function(){
  
 var chart_sum = new CanvasJS.Chart("cate_drop_sum", {
-	width: $(window).width()*0.85,
+	width: "425",
 	height: "250",
 	animationEnabled: true, 
 	theme: "light",
@@ -200,7 +200,7 @@ var chart_sum = new CanvasJS.Chart("cate_drop_sum", {
 	
 });
 var chart_cnt = new CanvasJS.Chart("cate_drop_cnt", {
-	width: $(window).width()*0.85,
+	width:"425",
 	height: "250",
 	animationEnabled: true, 
 	theme: "light",
