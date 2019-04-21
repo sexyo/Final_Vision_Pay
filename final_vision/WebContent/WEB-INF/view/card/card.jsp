@@ -127,7 +127,7 @@ v_allcard.style.display = 'none';
                <button type="button" class="navbar-toggle collapsed"
                   data-toggle="modal" data-target="#exampleModal"
                   style="background-color: #000000; color: #ffffff; border-color: #000000">
-                  <img src="/images/account.png"> 추가
+                  <img src="/images/card.png"> 추가
                </button>
             </h4>
          </div>
@@ -138,7 +138,7 @@ v_allcard.style.display = 'none';
                   <button type="button" data-toggle="modal"
                      data-target="#exampleModal"
                      style="background-color: #000000; color: #ffffff; border-color: #000000">
-                     <img src="/images/account.png">추가
+                     <img src="/images/card.png">추가
                   </button>
                </form>
             </h4>
@@ -210,7 +210,7 @@ v_allcard.style.display = 'none';
 </div>
 <div class="media-body">
 <h4 class="media-heading"></h4>
-<form id="all_card" name="all_card" method="post" action="../pay/payment?card_num=<%=allCard.get(i).get("CARD_NUM") %>">
+<form id="all_card" name="all_card" method="post" action="../pay/payment?card_num=<%=allCard.get(i).get("CARD_NUM") %>&bin_company=<%=allCard.get(i).get("BIN_COMPANY") %>">
 <table style="width:40%">
 	<tr>
 	 <td rowspan="3"> <input type="image"  img src="/images/<%=allCard.get(i).get("BIN_COMPANY") %>.png" style="width: 150px; height: 100px" value="<%=allCard.get(i).get("CARD_NUM") %>">

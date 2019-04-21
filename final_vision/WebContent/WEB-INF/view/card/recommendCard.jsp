@@ -141,21 +141,26 @@ input::placeholder {
 </style>
 </head>
 <body>
-	<!-- 네비게이션 바 시작 -->
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<br>
-			<h4>
-				<div class="navbar-header">
-					<a style="color: #ffffff; height: 25px" href="../recommend/myRecommendCard"><</a>
-					<a href="../member/index" style="color: white">&nbsp;<img src="/images/VISION2.png" id="imagepreview" style="width: 80px; height: 20px;">&nbsp;</a>
-					<span style="font-size:2em;color: white;">&nbsp;모든&nbsp;VISION&nbsp;카드</span>
-				</div>
-			</h4>
-			<br>
-		</div>
-	</nav>
-	<!-- 네비게이션 바 끝 -->
+		 <!-- 네비게이션 바 시작 -->
+   <nav class="navbar navbar-default">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <h4>
+               <a class="navbar-brand" style="color: #ffffff; height: 25px"
+                  href="../member/index"><</a> <a class="navbar-brand" href="../recommend/recommendCard">
+                  <img src="/images/VISION2.png" id="imagepreview"
+                  style="width: 110px; height: 35px" align="left">&nbsp;추천카드
+               </a>
+            </h4>
+         </div>
+         <div class="collapse navbar-collapse "
+            id="bs-example-navber-collapse-1">
+            <h4>
+            </h4>
+         </div>
+      </div>
+   </nav>
+   <!-- 네비게이션 바 끝 -->
 	<!-- 모든 카드 시작 -->
 	<div class="container" id="rc_container">
 		<div class="row">

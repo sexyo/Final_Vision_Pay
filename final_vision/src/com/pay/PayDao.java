@@ -8,6 +8,8 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 import org.mybatis.spring.SqlSessionTemplate;
 
+import com.vo.CardVO;
+
 public class PayDao {
 	Logger logger = Logger.getLogger(PayDao.class);
 	
@@ -53,5 +55,11 @@ public class PayDao {
 		hashList = sqlSessionTemplate.selectList("hashList", hash);
 		logger.info("hashList"+hashList);
 		return hashList;
+	}
+	public List<Map<String, Object>> allCard(CardVO cardVO) {
+		List<Map<String,Object>> allCard = new ArrayList<Map<String,Object>>();
+		allCard = sqlSessionTemplate.selectList("allCard",cardVO);
+		
+		return allCard;
 	}
 }

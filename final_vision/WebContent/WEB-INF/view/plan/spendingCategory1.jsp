@@ -200,7 +200,7 @@ var chart_sum = new CanvasJS.Chart("cate_drop_sum", {
 	
 });
 var chart_cnt = new CanvasJS.Chart("cate_drop_cnt", {
-	width:"425",
+	width: "425",
 	height: "250",
 	animationEnabled: true, 
 	theme: "light",

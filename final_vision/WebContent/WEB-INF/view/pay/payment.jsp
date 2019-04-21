@@ -3,6 +3,7 @@
 <%@ page import = "java.util.*" %>
 <%
 	String card_num = (String)request.getAttribute("cardInfo");
+	String card_image = (String)request.getAttribute("card_image");
 %>
 <!DOCTYPE html>
 <html>
@@ -25,26 +26,26 @@ function payPwMove(){
 <form action="complete" method="POST" id="c_pass">
 	<input type="hidden" name="card_num" value="<%=card_num%>">
 </form>
-<!-- 네비게이션 바 시작 -->
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
-	<br>
-	<h4>
-		<div class="navbar-header" style="height: 50px">
-			<a style="color: #ffffff; height: 25px" href="main2.jsp"><</a>
-			<a href="card.jsp" style="color: white">&nbsp;
-				<img src="images/VISION2.png" id="imagepreview" style="width: 80px; height: 20px;">&nbsp;카드 결제
-			</a>
-			<span style="margin-left: 150px;">
-				<a href="memberJoin.jsp" >
-					<img src="images/card.png" id="imagepreview" style="width: 40px; height: 20px;">&nbsp;추가
-				</a>
-			</span>
-		</div>
-	</h4>
-	</div>
-</nav>
-<!-- 네비게이션 바 끝 -->
+ <!-- 네비게이션 바 시작 -->
+   <nav class="navbar navbar-default">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <h4>
+               <a class="navbar-brand" style="color: #ffffff; height: 25px"
+                  href="../member/index"><</a> <a class="navbar-brand" href="../pay/pay">
+                  <img src="/images/VISION2.png" id="imagepreview"
+                  style="width: 110px; height: 35px" align="left">&nbsp;결제
+               </a>
+            </h4>
+         </div>
+         <div class="collapse navbar-collapse "
+            id="bs-example-navber-collapse-1">
+            <h4>
+            </h4>
+         </div>
+      </div>
+   </nav>
+   <!-- 네비게이션 바 끝 -->
 <%
 	if(card_num!=null){
 %>
@@ -56,7 +57,7 @@ function payPwMove(){
 			<div class="col-md-11">
 				<h3>
 					<p>
-						<img src="images/AAP1266.png" style="width: 250px; height: 150px; margin-right: 30px" align="left"> 
+						<img src="/images/<%=card_image %>.png" style="width: 250px; height: 150px; margin-right: 30px" align="left"> 
 						<br><%=card_num %> 
 						<br><p>
 							<button id="payPwMove" name="payPwMove" type="button" onClick="payPwMove()" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" style="background-color: white; color: black; border-color: white;">
@@ -73,5 +74,6 @@ function payPwMove(){
 <%
 	}
 %>
+<%@ include file="../include/footer.jsp" %>	
 </body>
 </html>

@@ -23,7 +23,9 @@
 		String[] r_months = r_month.split("/");
 		int y = 1;
 		for (int i = 1; i < r_evers.length; i++) {
-
+			if(y>30){
+				y=31;
+			}
 			map1 = new HashMap<Object, Object>();
 			map2 = new HashMap<Object, Object>();
 			map1.put("x", y);
@@ -42,7 +44,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset=UTF-8">
 <mata name="viewport" content="width=device-width" , inital-scale="1"></mata>
 <script type="text/javascript" src="../canvasjs/jquery.canvasjs.min.js"></script>
 <script type="text/javascript" src="../canvasjs/canvasjs.min.js"></script>
@@ -111,6 +113,6 @@
 </script>
 </head>
 <body>
-	<div id="month_drop" align="center" style=" width: 100%;"></div>
+	<div id="month_drop" align="center" style="height: 100%; width: 425px; margin-left: 15px"></div>
 </body>
 </html>

@@ -46,24 +46,26 @@ var frame; //iframe을 담아둘 변수
 </style>
 </head>
 <body>
-	<nav class="navbar navbar-default">
-		<div class="container-fluid">
-			<br>
-			<h5>
-				<div class="navbar-header">
-					<a style="color: #ffffff; height: 25px" href="../member/index"><</a>
-					<a href="../member/index" style="color: white">&nbsp;<img src="/images/VISION2.png" id="imagepreview" style="width: 80px; height: 20px;">&nbsp;카드</a>
-					<span style="margin-left: 100px;">
-					<a type="button" href="../membership/mshipAllList" style="background-color: #000000; color: #ffffff; border-color: #000000">
-							<img src="/images/card.png">
-							추가
-						</a>
-					</span>
-				</div>
-			</h5>
-			<br>
-		</div>
-	</nav>
+ <!-- 네비게이션 바 시작 -->
+   <nav class="navbar navbar-default">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <h4>
+               <a class="navbar-brand" style="color: #ffffff; height: 25px"
+                  href="../member/index"><</a> <a class="navbar-brand" href="../membership/mshipList">
+                  <img src="/images/VISION2.png" id="imagepreview"
+                  style="width: 110px; height: 35px" align="left">&nbsp;멤버쉽
+               </a>
+            </h4>
+         </div>
+         <div class="collapse navbar-collapse "
+            id="bs-example-navber-collapse-1">
+            <h4>
+            </h4>
+         </div>
+      </div>
+   </nav>
+   <!-- 네비게이션 바 끝 -->
 <!--카드리스트 시작 ^^!!  -->
 		<div class="container">
 		<div class="row">

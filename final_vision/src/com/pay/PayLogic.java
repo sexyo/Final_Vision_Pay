@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.pay.Wellet;
+import com.vo.CardVO;
 
 @Service
 public class PayLogic {
@@ -120,6 +121,11 @@ logger.info(sb.toString());
 		logger.info("card_pw 호출 성공");
 		String card_pw = payDao.card_pw(pMap);
 		return card_pw;
+	}
+	public List<Map<String, Object>> allCard(CardVO cardVO) {
+		List<Map<String,Object>> allCard = null;
+		allCard = payDao.allCard(cardVO);
+		return allCard;
 	}
 
 }

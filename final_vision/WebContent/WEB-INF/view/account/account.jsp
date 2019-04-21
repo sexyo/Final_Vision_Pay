@@ -110,7 +110,7 @@ $(document).ready(function(){
          <div class="navbar-header">
             <h4>
                <a class="navbar-brand" style="color: #ffffff; height: 25px"
-                  href="../member/index"><</a> <a class="navbar-brand" href="#">
+                  href="../member/index"><</a> <a class="navbar-brand" href="../account/account">
                   <img src="/images/VISION2.png" id="imagepreview"
                   style="width: 110px; height: 35px" align="left">&nbsp;계좌
                </a>

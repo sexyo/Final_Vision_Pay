@@ -10,8 +10,8 @@
 <meta charset="UTF-8">
 <title>GS칼텍스 구매 페이지</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<link rel="stylesheet" href="css/bootstrap.css">
-<link rel="stylesheet" href="css/bin.css">
+<link rel="stylesheet" href="/css/bootstrap.css">
+<link rel="stylesheet" href="/css/bin.css">
 <script type="text/javascript">
 function payInfoPass(){
 	$("#f_pass").submit();
@@ -38,7 +38,7 @@ function payInfoPass(){
 		<div class="body" style="text-align: center; font-size: 50px">
 			<%=store.get("product")%>
 			<%--       <%=wmap.get("product") %> --%>
-			<br> <img src="images/cgv구로.png" id="imagepreview"
+			<br> <img src="/images/cgv구로.png" id="imagepreview"
 				style="width: 80%; height: 80%"> <br>
 			<div style="font-size: 50px"><%=store.get("amount")%></div>
 			<%--          <%=wmap.get("amount") %> --%>
@@ -53,5 +53,6 @@ function payInfoPass(){
 			</h2>
 		</div>
 	</div>
+	
 </body>
 </html>

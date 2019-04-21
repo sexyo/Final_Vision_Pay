@@ -10,9 +10,6 @@
 		select coupon_name, coupon_point, coupon_num from coupon
 	</select>
 	
-	<resultMap type="java.util.Map" id="r_store_cnt">
-		<result property="r_store_cnt" column="r_store_cnt"/>
-	</resultMap>
 	<select id="exCoupon"  statementType="CALLABLE" parameterType="Map" >
 		{call PROC_EXCOUPON(#{mem_id,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}
 					   , #{coupon_num,mode=IN, jdbcType=VARCHAR, javaType=java.lang.String}

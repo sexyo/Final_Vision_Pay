@@ -1,57 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+ <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.*" %>
 <%@page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <%
-	List<Map<String,Object>> mshipAllList = (List<Map<String,Object>>)request.getAttribute("mshipAllList");
-     String mem_id = (String)session.getAttribute("mem_id");
+	List<Map<String,Object>> allCard = (List<Map<String,Object>>)request.getAttribute("allCard");
 %>
-
 <html>
-<head>
 <meta charset="UTF-8">
 <mata name="viewport" content="width=device-width" , inital-scale="1">
-<title>카드 페이지</title>
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>
+<head>
+<title>카드 페이지</title>
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/bin.css">
-<script type="text/javascript">
-	function mship_num(mship_num){
-		var param="mship_num="+mship_num+"&mem_id=<%=mem_id%>";
-		$.ajax({
-			  url: "mshipAdd",
-			  method: "POST",
-			  data: param,
-			  success:function(result){
-				  if(result==0){
-					  alert("카드추가 실패");
-				  }
-				  else if(result==1){
-					  location.href="./mshipAllList";
-			      }
-				  else{
-					  alert("이미 보유하신 카드입니다");
-				  }
-			  }
-			});
-	}
-</script>
+<style>
+.detail_card{border:0}
+
+</style>
 </head>
-
-
 <body>
-
- <!-- 네비게이션 바 시작 -->
+<%
+	String mem_id = (String)session.getAttribute("mem_id");
+%>
+  <!-- 네비게이션 바 시작 -->
    <nav class="navbar navbar-default">
       <div class="container-fluid">
          <div class="navbar-header">
             <h4>
                <a class="navbar-brand" style="color: #ffffff; height: 25px"
-                  href="../member/index"><</a> <a class="navbar-brand" href="../membership/mshipList">
+                  href="../member/index"><</a> <a class="navbar-brand" href="../pay/pay">
                   <img src="/images/VISION2.png" id="imagepreview"
-                  style="width: 110px; height: 35px" align="left">&nbsp;멤버쉽
+                  style="width: 110px; height: 35px" align="left">&nbsp;결제
                </a>
             </h4>
          </div>
@@ -63,6 +44,7 @@
       </div>
    </nav>
    <!-- 네비게이션 바 끝 -->
+	
 <!--카드리스트 시작 ^^!!  -->
 		<div class="container">
 		<div class="row">
@@ -79,37 +61,40 @@
 						</p>
 					</h3>
 
-
+<div id="all">
 <%
-	if(mshipAllList!=null){
-		for(int i=0;i<mshipAllList.size();i++){
-			
-%>
 
+	if(allCard!=null){
+		for(int i=0;i<allCard.size();i++){
+%>
 <div class="media">
 <div class="media-left">
 </div>
 <div class="media-body">
 <h4 class="media-heading"></h4>
-<table style="width:300px">
+<form id="all_card" name="all_card" method="post" action="../pay/payment?card_num=<%=allCard.get(i).get("CARD_NUM") %>&bin_company=<%=allCard.get(i).get("BIN_COMPANY") %>">
+<table style="width:40%">
 	<tr>
-	 <td rowspan="3">
-	 <td colspan="2" style="color:orange; font-size:120%; background-color:grey">
-	 &nbsp;&nbsp;<%=mshipAllList.get(i).get("MSHIP_NAME") %></td>
+	 <td rowspan="3"> <input type="image"  img src="/images/<%=allCard.get(i).get("BIN_COMPANY") %>.png" style="width: 150px; height: 100px" value="<%=allCard.get(i).get("CARD_NUM") %>">
+	 <td colspan="2" align=center style="color:orange; font-size:120%; background-color:grey">
+	 <%=allCard.get(i).get("BIN_NAME") %></td>
 	</tr>
 	<tr>
-		<td colspan="2" align=center>소모 포인트 : <%=mshipAllList.get(i).get("MSHIP_NUM")%>Point</td>
-	</tr> 
-	 <tr>
+		<td colspan="2" align=center style="color:orange; background-color:#D8D8D8" height="40px"><%=allCard.get(i).get("BIN_COMPANY") %></td>
+	</tr>
+	<tr>
+		<td colspan="2" align=center>카드번호:&nbsp;&nbsp;<%=allCard.get(i).get("CARD_NUM") %></td>
+ 	</tr> 
 </table>
- <input type="button" id="mship_num"<%=i %> name="mship_num"  class="btn btn-primary" value="추가하기" onClick="mship_num('<%=mshipAllList.get(i).get("MSHIP_NUM")%>');">
-</div>
+</form>
+</div> 
 </div>
 
 <%			
 		}
 	}
 %>
+</div>
 						</p>
 					</h3>
 				</div>
@@ -117,6 +102,7 @@
 		</div>
 		<hr>
 	</div>
+
 			
 <!--카드리스트 끗!!  -->
 	<!-- 네비게이션 바 시작 -->
@@ -124,8 +110,5 @@
 	
 	<!-- 푸터 시작 -->
 	<%@ include file="../include/footer.jsp" %>	
-	<!-- 푸터 끝 -->
-	<!-- Modal -->
-
 </body>
 </html>

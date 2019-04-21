@@ -2,6 +2,7 @@ package com.pay;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -14,12 +15,15 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.member.MemberLogic;
 import com.util.HangulConversion;
+import com.vo.CardVO;
 
 
 @Controller
@@ -29,14 +33,19 @@ public class PayController {
 	@Autowired
 	PayLogic payLogic = null;
 	String path = "";
-	String card_num = "4077851424567894";
+	String card_num = null;
+	@Autowired
+	MemberLogic memberLogic = null;
+	HttpSession session = null;
 	
 	@RequestMapping(value = "payment", method = {RequestMethod.GET, RequestMethod.POST})
 	public String payment(Model model, HttpServletRequest req) throws ServletException, IOException {
 		logger.info("payment 호출 성공");
 		card_num = req.getParameter("card_num");
+		String card_image = req.getParameter("bin_company");
 		logger.info("card정보값"+card_num);
 		model.addAttribute("cardInfo", card_num);
+		model.addAttribute("card_image", card_image);
 		path = "pay/payment";
 		return path;
 	}
@@ -103,8 +112,28 @@ public class PayController {
 		}else {
 			logger.info("결제 실패");
 		}
-		model.addAttribute("complete",pMap);
-		path="pay/complete";
+		session = req.getSession();
+		String mem_id = (String) session.getAttribute("mem_id");
+		if (mem_id == null) {
+			path = "member/main";
+		} else if (mem_id != null) {
+			pMap.put("mem_id", mem_id);
+			Map<String, Object> refresh = null;
+			refresh = memberLogic.refresh(pMap);
+			String r_card = String.valueOf(refresh.get("R_CARD"));
+			String r_account = String.valueOf(refresh.get("R_ACCOUNT"));
+			String r_point = String.valueOf(refresh.get("R_POINT"));
+			String r_mship = String.valueOf(refresh.get("R_MSHIP"));
+			String r_coupon = String.valueOf(refresh.get("R_COUPON"));
+			model.addAttribute("r_card", r_card);
+			model.addAttribute("r_account", r_account);
+			model.addAttribute("r_point", r_point);
+			model.addAttribute("r_mship", r_mship);
+			model.addAttribute("r_coupon", r_coupon);
+			logger.info(refresh);
+			path = "member/main";
+		}
+		path="member/main";
 		return path;
 	}
 	@RequestMapping(value = "info", method = {RequestMethod.GET, RequestMethod.POST})
@@ -114,6 +143,21 @@ public class PayController {
 //		pMap.put("", );
 		model.addAttribute("idcard",pMap);
 		path="pay/info";
+		return path;
+	}
+	@RequestMapping(value = "pay", method = {RequestMethod.GET, RequestMethod.POST})
+	public String pay(Model model, HttpServletRequest req, @ModelAttribute CardVO cardVO) throws ServletException, IOException {
+		HttpSession session = req.getSession();
+		String path = "";
+		String mem_id = (String) session.getAttribute("mem_id");
+		cardVO.setMem_id(mem_id);
+		logger.info(mem_id);
+		List<Map<String, Object>> allCard = payLogic.allCard(cardVO);
+		logger.info(allCard);
+		// String mem_id = req.getParameter("mem_id");
+		model.addAttribute("allCard", allCard);
+		path = "pay/pay";
+
 		return path;
 	}
 }

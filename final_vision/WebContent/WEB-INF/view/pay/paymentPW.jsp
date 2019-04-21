@@ -51,7 +51,7 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 			<div class="row" style="left: -50%;position: relative; ">
 				<div class="col">
 					<div class="form-group">
-						<h5 class="text-center"><label for="cryxpad-input-field"><a href="main2.jsp"><</a>&nbsp;&nbsp;결제 비밀번호 입력
+						<h5 class="text-center"><label for="cryxpad-input-field"><a href="../member/index"><</a>&nbsp;&nbsp;결제 비밀번호 입력
 						</label></h5>
 						<small id="cryxpad-input-field-help" class="form-text text-muted">카드 비밀번호를 입력하세요.</small>
 						<input type="password" class="form-control" id="cryxpad-input-field" aria-describedby="cryxpad-input-field-help" placeholder="비밀번호" style="width: 99%;">
@@ -66,17 +66,17 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 					<button id="cryxpad-remove-btn" type="button" class="btn btn-danger" style="width: 100px ">삭제</button>
 				</div>
 			</div>
-<!-- <a href="naversearchapp://search?qmenu=qrcode&version=3"> -->
-<!-- <button type="button" class="btn btn-info">카메라</button> -->
-<!-- </a> -->
+<!-- <a href="naversearchapp://search?qmenu=qrcode&version=3">
+<button type="button" class="btn btn-info">카메라</button>
+</a> -->
 		</div>			
 		</div>
 	</div>
 </body>
 
-<!-- <script  src="jquery.min.js"></script> -->
+<script  src="/js/jquery.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script  src="js/jquery.cryxpad.js"></script>
+<script  src="/js/jquery.cryxpad.js"></script>
 <script type="text/javascript">
 	$(function(){
 		//Appel par défaut du plug-in

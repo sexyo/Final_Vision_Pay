@@ -185,7 +185,7 @@ var chart_sum = new CanvasJS.Chart("cate_drop_sum", {
 	subtitles: [{
 		text: "<%=center_sum%>",
 		verticalAlign: "center",
-		fontSize: 24,
+		fontSize: 20,
 		dockInsidePlotArea: true
 	}],
 	
@@ -200,7 +200,7 @@ var chart_sum = new CanvasJS.Chart("cate_drop_sum", {
 	
 });
 var chart_cnt = new CanvasJS.Chart("cate_drop_cnt", {
-	width:"425",
+	width: "425",
 	height: "250",
 	animationEnabled: true, 
 	theme: "light",
@@ -215,7 +215,7 @@ var chart_cnt = new CanvasJS.Chart("cate_drop_cnt", {
 		text: "<%=center_cnt%>"
 	,
 				verticalAlign : "center",
-				fontSize : 24,
+				fontSize : 20,
 				dockInsidePlotArea : true
 			} ],
 

@@ -169,7 +169,7 @@ img#plax-sphere-3 {
 										id="imagepreview" style="width: 30px; height: 20px">&nbsp;&nbsp;리워즈</a></li>
 							</ul>
 						</li>
-						<li><a href="../pay/payment">VISION 결제</a></li>
+						<li><a href="../pay/pay">VISION 결제</a></li>
 
 						<%
 							}

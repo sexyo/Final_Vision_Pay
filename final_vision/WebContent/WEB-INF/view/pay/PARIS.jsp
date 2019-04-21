@@ -67,5 +67,6 @@ $(document).ready(function(){
 		<button type="button" class="btn btn-default" >취소</button>
 	</div>
 </div>
+
 </body>
 </html>
