@@ -46,41 +46,7 @@
 	location.href="../member/index";
 		}
 </script>
-  <!-- 네비게이션 바 시작 -->
-   <nav class="navbar navbar-default">
-      <div class="container-fluid">
-         <div class="navbar-header">
-            <h4>
-               <a class="navbar-brand" style="color: #ffffff; height: 25px"
-                  href="../member/index"><</a> <a class="navbar-brand" href="../account/account">
-                  <img src="/images/VISION2.png" id="imagepreview"
-                  style="width: 110px; height: 35px" align="left">&nbsp;계좌
-               </a>
-               <button type="button" class="navbar-toggle collapsed"
-                  data-toggle="modal" data-target="#m_accountAdd"
-                  style="background-color: #000000; color: #ffffff; border-color: #000000">
-                  <img src="/images/account.png"> 추가
-               </button>
-            </h4>
-         </div>
-         <div class="collapse navbar-collapse "
-            id="bs-example-navber-collapse-1">
-            <h4>
-               <form class="navbar-form navbar-right">
-                  <button type="button" data-toggle="modal"
-                     data-target="#m_accountAdd"
-                     style="background-color: #000000; color: #ffffff; border-color: #000000">
-                     <img src="/images/account.png">추가
-                  </button>
-               </form>
-            </h4>
-         </div>
-      </div>
-   </nav>
-   <!-- 네비게이션 바 끝 -->
-        
-결제완료<button id="complete" onClick="gogo();">확인</button>
-
-<%@ include file="../include/footer.jsp" %>   
+        결제완료
+<button id="complete" onClick="gogo();" style="background-color: #000000; color: #ffffff; border-color: #000000">확인</button>
 </body>
 </html>

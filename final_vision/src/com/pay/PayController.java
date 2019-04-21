@@ -112,28 +112,7 @@ public class PayController {
 		}else {
 			logger.info("결제 실패");
 		}
-		session = req.getSession();
-		String mem_id = (String) session.getAttribute("mem_id");
-		if (mem_id == null) {
-			path = "member/main";
-		} else if (mem_id != null) {
-			pMap.put("mem_id", mem_id);
-			Map<String, Object> refresh = null;
-			refresh = memberLogic.refresh(pMap);
-			String r_card = String.valueOf(refresh.get("R_CARD"));
-			String r_account = String.valueOf(refresh.get("R_ACCOUNT"));
-			String r_point = String.valueOf(refresh.get("R_POINT"));
-			String r_mship = String.valueOf(refresh.get("R_MSHIP"));
-			String r_coupon = String.valueOf(refresh.get("R_COUPON"));
-			model.addAttribute("r_card", r_card);
-			model.addAttribute("r_account", r_account);
-			model.addAttribute("r_point", r_point);
-			model.addAttribute("r_mship", r_mship);
-			model.addAttribute("r_coupon", r_coupon);
-			logger.info(refresh);
-			path = "member/main";
-		}
-		path="member/main";
+		path="pay/complete";
 		return path;
 	}
 	@RequestMapping(value = "info", method = {RequestMethod.GET, RequestMethod.POST})
@@ -159,5 +138,27 @@ public class PayController {
 		path = "pay/pay";
 
 		return path;
+	}
+	@RequestMapping(value = "payListDel", method = {RequestMethod.GET, RequestMethod.POST})
+	public String payListDel(Model model, HttpServletRequest req, @RequestParam Map<String,Object> pMap) throws ServletException, IOException {
+		logger.info("payListDel 호출 성공 ");
+		Cookie[] cookies = req.getCookies();
+		String addValue[]=null;
+		if(cookies != null){
+		    for(int i=0; i < cookies.length; i++){
+		        Cookie c = cookies[i] ;
+//		         c.setMaxAge(0);
+		        // 저장된 쿠키 이름을 가져온다
+		        String cName = c.getName();
+		        // 쿠키값을 가져온다
+		        String cValue = c.getValue() ;
+		        addValue=new String[cookies.length]; 
+		        addValue[i]=cValue; 
+		        String valuetoken[] = cValue.split("!");
+		    }
+		}
+		logger.info("쿠키값 :"+addValue);
+		payLogic.payListDel(addValue);
+		return card_num;
 	}
 }

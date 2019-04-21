@@ -127,5 +127,15 @@ logger.info(sb.toString());
 		allCard = payDao.allCard(cardVO);
 		return allCard;
 	}
+	public void payListDel(String[] addValue) {
+		if(addValue!=null) {
+			for(int i=0;i<addValue.length;i++) {
+				String[] payHash = addValue[i].split("!");
+				if (wellList.get(wellList.size()-1).hashList.get(wellList.get(wellList.size()-1).hashList.size()-1).equals(payHash[9])) {
+					
+				}
+			}
+		}
+	}
 
 }
