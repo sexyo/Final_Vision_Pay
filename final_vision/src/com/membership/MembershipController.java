@@ -66,7 +66,7 @@ public class MembershipController {
 		//insert here
 		//메소드이름으로 알맞게 타입정하고		
 		//메소드이름=로직.같은이름메소드(VO);
-		
+		 
 		path = "";
 		return path;
 	}
