@@ -29,10 +29,11 @@ group by bin_company
 </select>
 
 <select id="allCard" parameterType="com.vo.CardVO" resultType="map">
-select mem_id ,card_num, bin_company, bin_name 
-from creditcard, cardbin 
-where CREDITCARD.bin=cardbin.bin
-and mem_id = #{mem_id}   
+select m.mem_id ,card_num, bin_company, bin_name ,mem_pw
+from creditcard cc, cardbin c ,member m 
+where cc.bin=c.bin
+and M.MEM_ID = CC.MEM_ID
+and m.mem_id = #{mem_id}   
 </select>
 
 

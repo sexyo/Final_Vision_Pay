@@ -7,11 +7,8 @@
 	List<Map<String,Object>> cardAllList = (List<Map<String,Object>>)request.getAttribute("cardAllList");
 	List<Map<String,Object>> allCard = (List<Map<String,Object>>)request.getAttribute("allCard");
 	List<Map<String,Object>> detail_card = (List<Map<String,Object>>)request.getAttribute("detail_card");
-	
 %>
-
 <html>
-
 <meta charset="UTF-8">
 <mata name="viewport" content="width=device-width" , inital-scale="1">
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -89,9 +86,6 @@ $(document).ready(function(){
 
 });
 </script>
-
-
-
 <script type="text/javascript">
  $(document).ready(function(){
 var v_usecard = document.getElementById("use");
