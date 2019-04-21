@@ -1,9 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="membershipMapper">
+
 	<select id="check_efsmail" parameterType="String" resultType="string">
 		select mem_id from member
 	</select>
-	
+	<select id="mshipList" parameterType="map" resultType="map">
+select max(mship_name) as mship_name ,max((msave_percent)*100) as msave_percent,
+max(brand_name) as brand_name , max(mem_id) as mem_id
+from mship m, mship_brand mb, brand b, mshipcard mc
+where  m.mship_num = mb.mship_num
+and mb.brand_num = b.brand_num
+and MC.MSHIP_NUM = M.MSHIP_NUM
+and MC.MEM_ID = #{mem_id}
+group by brand_name
 
+   </select>
+  
+  
+   	<select id="mshipAllList" parameterType="map" resultType="map">
+ select *
+   from mship
+  where mship_num not in (select mship_num
+                        from mshipcard
+                       where mem_id = #{mem_id})
+   </select>
+
+	<resultMap type="java.util.Map" id="r_list">
+    <result column="r_list" property="r_list"/>
+    </resultMap>
+<insert id="mshipAdd" parameterType="map" statementType="CALLABLE">
+		{call proc_mship_add(#{P_MEM_ID,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{P_MSHIP_NUM,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						 ,#{RESULT,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
+						)}
+</insert>
 </mapper>

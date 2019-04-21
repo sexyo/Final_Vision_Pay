@@ -4,10 +4,11 @@
 <%@page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <%
-	List<Map<String,Object>> couponInven = (List<Map<String,Object>>)request.getAttribute("couponInven");
+	List<Map<String,Object>> mshipList = (List<Map<String,Object>>)request.getAttribute("mshipList");
 String mem_id = (String)session.getAttribute("mem_id");
-	
+    List<Map<String,Object>> mshipAllList = (List<Map<String,Object>>)request.getAttribute("mshipAllList");
 %>
+
 
 <html>
 
@@ -16,7 +17,7 @@ String mem_id = (String)session.getAttribute("mem_id");
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script src="/js/bootstrap.js"></script>
 <head>
-<title>쿠폰함</title>
+<title>멤버쉽 리스트</title>
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/bin.css">
 <script type="text/javascript">
@@ -53,6 +54,10 @@ var frame; //iframe을 담아둘 변수
 					<a style="color: #ffffff; height: 25px" href="../member/index"><</a>
 					<a href="../member/index" style="color: white">&nbsp;<img src="/images/VISION2.png" id="imagepreview" style="width: 80px; height: 20px;">&nbsp;카드</a>
 					<span style="margin-left: 100px;">
+					<a type="button" href="../membership/mshipAllList" style="background-color: #000000; color: #ffffff; border-color: #000000">
+							<img src="/images/card.png">
+							추가
+						</a>
 					</span>
 				</div>
 			</h5>
@@ -76,8 +81,8 @@ var frame; //iframe을 담아둘 변수
 					</h3>
 <div id="use">
 <%
-	if(couponInven!=null){
-		for(int i=0;i<couponInven.size();i++){
+	if(mshipList!=null){
+		for(int i=0;i<mshipList.size();i++){
 %>
 <div class="media">
 <div class="media-left">
@@ -90,14 +95,16 @@ var frame; //iframe을 담아둘 변수
 	
 	
 	<tr>
-		<td align=center colspan="2" style="color:orange; font-size:120%; background-color:grey">쿠폰 사용 기한 :&nbsp;<%=couponInven.get(i).get("LAST_DATE")%>일 까지</td>
+		<td align=center colspan="2" style="color:orange; font-size:120%; background-color:grey">멤버쉽 카드 :&nbsp;<%=mshipList.get(i).get("MSHIP_NAME")%></td>
 	</tr>
 	
 	<tr>
-	    <td align=center colspan="2" style="color:black; font-size:120%; background-color:#D8D8D8">쿠폰이름 :&nbsp;<%=couponInven.get(i).get("COUPON_NAME")%></td>
+	    <td align=center colspan="2" style="color:black; font-size:120%; background-color:#D8D8D8">적립율 :&nbsp;<%=mshipList.get(i).get("MSAVE_PERCENT")%>%</td>
+	</tr>
+	<tr>
+	    <td align=center colspan="2" style="color:black; font-size:120%; background-color:#D8D8D8">상호명 :&nbsp;<%=mshipList.get(i).get("BRAND_NAME")%></td>
 	</tr>
 </table>
-
 </div>
 </div>
 <%			

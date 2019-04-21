@@ -111,7 +111,7 @@
 								<li><a href="../recommend/myRecommendCard"><img
 										src="/images/cardRecommend.png" id="imagepreview"
 										style="width: 30px; height: 20px">&nbsp;&nbsp;카드 추천</a></li>
-								<li><a href="#"><img src="/images/reward.png"
+								<li><a href="../rewards/couponInven"><img src="/images/reward.png"
 										id="imagepreview" style="width: 30px; height: 20px">&nbsp;&nbsp;리워즈</a></li>
 							</ul></li>
 						<li><a href="../pay/payment">VISION 결제</a></li>
@@ -203,9 +203,9 @@
 							class="btn btn-default btn-lg" style="border-color: white; width:20%;"
 							href="../account/account"><%=r_account%><br>계좌</a>
 						<a>|</a> <a class="btn btn-default btn-lg"
-							style="border-color: white; width:25%;" href="#"><%=r_mship%><br>멤버쉽</a>
+							style="border-color: white; width:25%;" href="../membership/mshipList"><%=r_mship%><br>멤버쉽</a>
 						<a>|</a> <a class="btn btn-default btn-lg"
-							style="border-color: white; width:20%;" href="#"><%=r_coupon%><br>쿠폰
+							style="border-color: white; width:20%;" href="../rewards/couponInven"><%=r_coupon%><br>쿠폰
 						</a>
 					</p>
 				</div>
