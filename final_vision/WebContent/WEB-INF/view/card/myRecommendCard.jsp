@@ -39,32 +39,6 @@
 <title>추천 카드 추천 페이지</title>
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/bin.css">
-<style>
-	#rc_container{
-	padding:10px 5% 10px 5%;
-	background-color:#bebebe;
-	margin: auto;
-	text-align: justify;
-	width:80%;
-	margin-bottom: 25px;
-	
-	
-	}
-	.media{
-	padding:1%;
-	width:100%;
-	display: inline-block;
-	background-color:#E2CFAA;
-	
-	}
-	h1{
-	text-align:center;
-	}
-	.media-body{
-	padding-left: 5%;
-	}
-
-</style>
 <script type="text/javascript">
 var acc_num_sel;
 $(document).ready(function() {
@@ -175,6 +149,16 @@ function cdRequest(in_name,p_bin){//카드 추가 시도
 };
 </script>
 <style type="text/css">
+.dropdown {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+.dropdown-menu{
+position:absolute;
+reft: 0;
+
+}
 .modal-footer{
 text-align: center;
 }
@@ -182,6 +166,30 @@ input::placeholder {
   color: red;
   font-style: italic;
 }
+	#rc_container{
+	padding:10px 5% 10px 5%;
+	background-color:#bebebe;
+	margin: auto;
+	text-align: justify;
+	width:80%;
+	margin-bottom: 25px;
+	
+	
+	}
+	.media{
+	padding:1%;
+	width:100%;
+	display: inline-block;
+	background-color:#E2CFAA;
+	
+	}
+	h1{
+	text-align:center;
+	}
+	.media-body{
+	padding-left: 5%;
+	}
+
 </style>
 </head>
 <body>
@@ -191,7 +199,9 @@ input::placeholder {
 			<br>
 			<h4>
 				<div class="navbar-header">
-					<a href="../member/index" style="color: white" >&nbsp;<img src="/images/VISION2.png" id="imagepreview" style="width: 80px; height: 20px;">&nbsp;<span style="font-size:2em;">&nbsp;추천&nbsp;카드</span></a>
+					<a style="color: #ffffff; height: 25px" href="../member/index"><</a>
+					<a href="../member/index" style="color: white">&nbsp;<img src="/images/VISION2.png" id="imagepreview" style="width: 80px; height: 20px;">&nbsp;</a>
+					<span style="font-size:2em; color: white;">&nbsp;추천&nbsp;카드</span>
 				</div>
 			</h4>
 			<br>
@@ -320,11 +330,13 @@ input::placeholder {
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="list-group-item"style="text-align: center; background-color:#FF8E99; margin-bottom:5px;"><span style="color:#000000; font-weight: bold;">계좌 추가하러 가기</span></a> 
-					<button class="btn btn-default dropdown-toggle form-control"
-						style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
-						계좌 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle form-control"
+							style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
+							계좌 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					</div>
 					<h4 style="text-align: center;">
 						VISION카드를 발급받으시려면 <br>결제비밀번호 <span style="color: red;"><U>6자리 숫자</U></span>와 <span style="color: red;"><U>청구일</U></span>을
 						입력하여 주세요.
@@ -367,11 +379,13 @@ input::placeholder {
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="list-group-item"style="text-align: center; background-color:#FF8E99; margin-bottom:5px;"><span style="color:#000000; font-weight: bold;">계좌 추가하러 가기</span></a>
-					<button class="btn btn-default dropdown-toggle form-control"
-						style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
-						계좌 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle form-control"
+							style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
+							계좌 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					</div>
 					<h4 style="text-align: center;">
 						VISION카드를 발급받으시려면 <br>결제비밀번호 <span style="color: red;"><U>6자리 숫자</U></span>와 <span style="color: red;"><U>청구일</U></span>을
 						입력하여 주세요.
@@ -416,11 +430,13 @@ input::placeholder {
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="list-group-item"style="text-align: center; background-color:#FF8E99; margin-bottom:5px;"><span style="color:#000000; font-weight: bold;">계좌 추가하러 가기</span></a>
-					<button class="btn btn-default dropdown-toggle form-control"
-						style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
-						계좌 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle form-control"
+							style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
+							계좌 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					</div>
 					<h4 style="text-align: center;">
 						VISION카드를 발급받으시려면 <br>결제비밀번호 <span style="color: red;"><U>6자리 숫자</U></span>와 <span style="color: red;"><U>청구일</U></span>을
 						입력하여 주세요.
@@ -465,11 +481,13 @@ input::placeholder {
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="list-group-item"style="text-align: center; background-color:#FF8E99; margin-bottom:5px;"><span style="color:#000000; font-weight: bold;">계좌 추가하러 가기</span></a>
-					<button class="btn btn-default dropdown-toggle form-control"
-						style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
-						계좌 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle form-control"
+							style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
+							계좌 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					</div>
 					<h4 style="text-align: center;">
 						VISION카드를 발급받으시려면 <br>결제비밀번호 <span style="color: red;"><U>6자리 숫자</U></span>와 <span style="color: red;"><U>청구일</U></span>을
 						입력하여 주세요.
@@ -515,11 +533,13 @@ input::placeholder {
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="list-group-item"style="text-align: center; background-color:#FF8E99; margin-bottom:5px;"><span style="color:#000000; font-weight: bold;">계좌 추가하러 가기</span></a>
-					<button class="btn btn-default dropdown-toggle form-control"
-						style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
-						계좌 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle form-control"
+							style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
+							계좌 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					</div>
 					<h4 style="text-align: center;">
 						VISION카드를 발급받으시려면 <br>결제비밀번호 <span style="color: red;"><U>6자리 숫자</U></span>와 <span style="color: red;"><U>청구일</U></span>을
 						입력하여 주세요.
@@ -562,11 +582,13 @@ input::placeholder {
 				</div>
 				<div class="modal-footer">
 					<a href="#" class="list-group-item"style="text-align: center; background-color:#FF8E99; margin-bottom:5px;"><span style="color:#000000; font-weight: bold;">계좌 추가하러 가기</span></a>
-					<button class="btn btn-default dropdown-toggle form-control"
-						 id="dropdownMenu1" data-toggle="dropdown">
-						계좌 <span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					<div class="dropdown">
+						<button class="btn btn-default dropdown-toggle form-control"
+							style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
+							계좌 <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					</div>
 					<h4 style="text-align: center;">
 						VISION카드를 발급받으시려면 <br>결제비밀번호 <span style="color: red;"><U>6자리 숫자</U></span>와 <span style="color: red;"><U>청구일</U></span>을
 						입력하여 주세요.
