@@ -266,7 +266,7 @@ input::placeholder {
 						style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">
 						계좌 <span class="caret"></span>
 					</button>
-					<ul class="dropdown-menu" aria-labelledby="dropdownMenu1" ></ul>
+					<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1" ></ul>
 					<h4 style="text-align: center;">
 						VISION카드를 발급받으시려면 <br>결제비밀번호 <span style="color: red;"><U>6자리 숫자</U></span>와 <span style="color: red;"><U>청구일</U></span>을
 						입력하여 주세요.

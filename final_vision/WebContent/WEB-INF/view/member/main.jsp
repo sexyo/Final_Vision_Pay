@@ -187,9 +187,9 @@
 			<div class="row">
 			<div class="col-md-4">
 				<p>
-					<a>
+					<a href="../recommend/myRecommendCard">
 						<button type="button" class="btn btn-info btn-lg"
-							data-toggle="modal" data-target="#myModal"
+							data-toggle="modal" data-target="#myModal"  
 							style="background-color: white; color: black; border-color: white;">
 							추천 카드</button>
 					</a>
