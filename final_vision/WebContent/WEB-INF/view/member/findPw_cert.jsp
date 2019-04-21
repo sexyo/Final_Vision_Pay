@@ -3,10 +3,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>비밀번호 찾기</title>
+	<title>아이디 찾기</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel='shortcut icon' href='https://sslimage.gmarket.co.kr/_Net/MyG/favicon/gmarket.ico' />
 	<link rel="apple-touch-icon-precomposed" href='https://sslimage.gmarket.co.kr/_Net/apple-touch-icon-precomposed.png'/>
     <link rel="apple-touch-icon" href='https://sslimage.gmarket.co.kr/_Net/apple-touch-icon.png'/>
 	
@@ -24,33 +23,56 @@
 	<script type='text/javascript' src='https://script.gmkt.kr/_Net/js/gmkt.js?dummy=2012091327262'></script>
 	<script type='text/javascript' defer='defer' src='https://script.gmkt.kr/_Net/js/impression.js'></script>
 	<script type='text/javascript' src='https://script.gmkt.kr/_Net/js/CommonHeader.js'></script>
+	
 	<link rel="stylesheet" type="text/css" href="https://script.gmkt.kr/pc/css/ko/common.css" />	
 	<link rel="stylesheet" type="text/css" href="https://script.gmkt.kr/pc/css/ko/member_join.css" />
     
 	<link rel="stylesheet" type="text/css" href="https://script.gmkt.kr/pc/css/ko/idpw-find.css" />
 
-
 </head>
 <body>
+    
 <script type="text/javascript">
 $(document).ready(function(){
-	 $('#reset_password_submit').on('click', function(){
+	var cert_num;
+	 $('#cert_send').on('click', function(){
 	        $.ajax({
 	               type: 'POST',
-	               url: 'findPw_idcheck',
+	               url: 'cert',
 	               data: {
-	                   "mem_id" : document.getElementById("mem_id").value,
+	                   "mem_phone" : document.getElementById("mem_phone").value,
+	                   "mem_name" : document.getElementById("mem_name").value,
 	               },
 	               success: function(data){
 	                   if(data != 0){
-		                   location.href="../member/findPw_cert";
+	                      alert("인증번호를 발송하였습니다.");
+	                      cert_num = data;
+	                      alert(cert_num);
 	                   }
 	                   else if(data == 0){
-	                      alert("존재하지 않는 ID입니다.");
+	                      alert("입력한 정보를 다시 확인해주세요.");
 	                   }
 	               }
 	        });   
 	    });/*end of ajax*/
+		 $('#sms_auth_submit').on('click', function(){
+			 	if(cert_num==document.getElementById("p_cert_num").value){
+		        $.ajax({
+		               type: 'POST',
+		               url: 'cert_findId',
+		               data: {
+		                   "mem_phone" : document.getElementById("mem_phone").value,
+		                   "mem_name" : document.getElementById("mem_name").value,
+		               },
+		               success: function(data){
+		                      location.href="../member/changePw";
+		                   }
+		        	   });   
+		 		}
+			 	else{	alert("인증번호를 다시 확인해주세요.");
+				 	}
+		    	});/*end of ajax*/
+		
 	
 	});
 
@@ -69,32 +91,56 @@ $(document).ready(function(){
 			<div id="box-tab-find-id" class="box-tab-idpwfind__contents">
 				<h2 class="forA11y">비밀번호 재설정</h2>
 			</div>
-			<!-- //#box-tab-find-id -->
-			<!-- #box-tab-find-pw -->
-			<div id="box-tab-find-pw" class="box-tab-idpwfind__contents box-tab-idpwfind__contents--active">
-				<h2 class="forA11y">비밀번호 재설정</h2>
-					<div id="section-idpwfind-pw-reset-id-search" class="section-idpwfind-results section-idpwfind-pw-reset-id-search">
-						<fieldset>
-							<legend class="forA11y">비밀번호 재설정 폼</legend>
-							<p class="text-idpw-search">아이디 확인 후 비밀번호를 재설정 할 수 있습니다.</p>
-							<ul class="list-inputs-setting-pw">
-								<li class="list-inputs-setting-pw__item">
-									<input type="text" class="form-input-search-id" placeholder="아이디" title="아이디 입력" maxlength="10" 
-										   id="mem_id" name="mem_id"/>
-								</li>
-							</ul>
-							<div class="box-buttons">
-								<button id="reset_password_submit" class="button-idpw button-idpw-primary">확인</button>
-							</div>
-						</fieldset>
-					</div>
-					<input type="hidden" id="hdn_target_url" name="hdn_target_url" value="" />
-			</div>
-			<!-- //#box-tab-find-pw -->
+			<!-- #box-tab-find-id -->
+			<div id="box-tab-find-id" class="box-tab-idpwfind__contents box-tab-idpwfind__contents--active">
+				<h2 class="forA11y">아이디 찾기</h2>
+					<ul class="list-method-idpwfind uxeslide">
+						<li class="list-method-idpwfind__item list-method-idpwfind__item--active" id="sms">
+							<span class="list-method-idpwfind__icon sprite-idpwfind">&nbsp;</span>
+<button class="list-method-idpwfind__button">휴대폰으로 찾기</button>
+<div class="list-method-idpwfind__content list-method-idpwfind__content--active">
+	<fieldset>
+		<legend class="forA11y">휴대폰으로 찾기 폼</legend>
+		<ul class="list-idpwform">
+			<li class="list-idpwform__item">
+				<div class="box-form-input">
+					<input type="text" class="form-input__idpwfind" placeholder="이름" title="이름을 입력해주세요" 
+						   onclick="smsAuth.event.clearMessages('name');" 
+						   onkeyup="smsAuth.event.clearMessages('name'); smsAuth.event.checkValues('name');"  
+						   onchange="smsAuth.event.clearMessages('name'); smsAuth.event.checkValues('name');" 
+						   id="mem_name" name="mem_name"/>
+				</div>
+				<p class="text-validation-error" id="sms_auth_name_err">이름을 입력해주세요.</p>
+			</li>
+			<li class="list-idpwform__item">
+				<div class="box-form-input">
+					<input type="text" class="form-input__idpwfind" placeholder="휴대폰번호(숫자만 입력)" title="휴대폰번호" maxlength="13" 
+						   onKeyup="autoHypenPhone(this);"
+						   id="mem_phone" name="mem_phone"/>
+					<button class="button-oninput button-get-code" id="cert_send">인증번호 받기</button>
+				</div>
+				<p class="text-validation-error" id="sms_auth_cell_phone_err">휴대폰번호를 입력해주세요.</p>
+			</li>
+			<li class="list-idpwform__item">
+				<label class="label-list-idpwform label-list-idpwform--varification" for="sms_auth_authkey_txt" maxlength="6">인증번호</label>
+				<div class="box-form-input">
+					<input type="text" id="p_cert_num" name="p_cert_num" class="form-input__idpwfind form-input__idpwfind--verification-code" maxlength="6" placeholder="6자리 숫자 입력"/>
+					<span class="box-form-input__time-limit" id="sms_auth_time_txt"></span>
+				</div>
+				<p class="text-validation-error" id="cert_num">휴대폰으로 발송된 인증번호를 입력해주세요.</p>
+			</li>
+		</ul>
+		<div class="box-buttons">
+			<button class="button-idpw button-idpw-primary" id="sms_auth_submit">비밀번호 재설정</button>
 		</div>
-		<!-- //.box-tab-idpwfind -->
-	</div>
+	</fieldset>
 </div>
+<input type="hidden" id="hdn_request_token_by_sms" name="hdn_request_token_by_sms"/>
+
+<script type="text/javascript">
+
+</script>
+
 
 </body>
 </html>

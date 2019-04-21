@@ -54,6 +54,26 @@ public class MemberLogic {
 		Map<String, Object> refresh = memberDao.refresh(pMap);
 		return refresh;
 	}
+
+	public int cert(Map<String, Object> pMap) {
+		int cert = memberDao.cert(pMap);
+		return cert;
+	}
+
+	public String findId(Map<String, Object> pMap) {
+		String findId = memberDao.findId(pMap);
+		return findId;
+	}
+
+	public String findPw_idcheck(Map<String, Object> pMap) {
+		String findPw_idcheck = memberDao.findPw_idcheck(pMap);
+		return findPw_idcheck;
+	}
+
+	public int pwChange(Map<String, Object> pMap) {
+		int pwChange = memberDao.pwChange(pMap);
+		return pwChange;
+	}
 	
 
 	

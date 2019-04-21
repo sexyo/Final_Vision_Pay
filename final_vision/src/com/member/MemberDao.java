@@ -44,5 +44,25 @@ public class MemberDao {
 		refresh = sqlSessionTemplate.selectOne("refresh",pMap);
 		return refresh;
 	}
+	public int cert(Map<String, Object> pMap) {
+		int cert = sqlSessionTemplate.selectOne("cert",pMap);
+		return cert;
+	}
+	public String findId(Map<String, Object> pMap) {
+		String mem_id = sqlSessionTemplate.selectOne("findId",pMap);
+		logger.info(mem_id);
+		return mem_id;
+	}
+	public String findPw_idcheck(Map<String, Object> pMap) {
+		sqlSessionTemplate.selectOne("findPw_idcheck",pMap);
+		String findPw_idcheck = (String)pMap.get("result");
+		logger.info(findPw_idcheck);
+		return findPw_idcheck;
+	}
+	public int pwChange(Map<String, Object> pMap) {
+		sqlSessionTemplate.selectOne("proc_pwChange",pMap);
+		int result = (Integer)pMap.get("result");
+		return result;
+	}
 
 }

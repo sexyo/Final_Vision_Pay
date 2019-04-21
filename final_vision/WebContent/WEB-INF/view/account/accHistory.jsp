@@ -87,19 +87,38 @@ $(document).ready(function(){
 });
   
 </script>
-	<nav class="navbar navbar-default navbar-fixed-top">
-		<div class="container-fluid">
-			<br>
-			<h5>
-				<div class="navbar-header">
-					<a style="color: #ffffff; height: 25px" href="../member/index"><</a>
-					<a href="../member/index" style="color: white">&nbsp;<img src="/images/VISION2.png" id="imagepreview" style="width: 80px; height: 20px;">&nbsp;계좌</a>
-					<span style="margin-left: 100px;"><button type="button" data-toggle="modal" data-target="#m_accountAdd"style="background-color: #000000; color: #ffffff; border-color: #000000"><img src="/images/account.png">추가</a></span>
-				</div>
-			</h5>
-			<br>
-		</div>
-	</nav>
+	<!-- 네비게이션 바 시작 -->
+   <nav class="navbar navbar-default">
+      <div class="container-fluid">
+         <div class="navbar-header">
+            <h4>
+               <a class="navbar-brand" style="color: #ffffff; height: 25px"
+                  href="../member/index"><</a> <a class="navbar-brand" href="../account/account">
+                  <img src="/images/VISION2.png" id="imagepreview"
+                  style="width: 110px; height: 35px" align="left">&nbsp;계좌
+               </a>
+               <button type="button" class="navbar-toggle collapsed"
+                  data-toggle="modal" data-target="#m_accountAdd"
+                  style="background-color: #000000; color: #ffffff; border-color: #000000">
+                  <img src="/images/account.png"> 추가
+               </button>
+            </h4>
+         </div>
+         <div class="collapse navbar-collapse "
+            id="bs-example-navber-collapse-1">
+            <h4>
+               <form class="navbar-form navbar-right">
+                  <button type="button" data-toggle="modal"
+                     data-target="#m_accountAdd"
+                     style="background-color: #000000; color: #ffffff; border-color: #000000">
+                     <img src="/images/account.png">추가
+                  </button>
+               </form>
+            </h4>
+         </div>
+      </div>
+   </nav>
+   <!-- 네비게이션 바 끝 -->
 
 <div class="modal fade" id="m_accountAdd" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -204,15 +223,9 @@ v_3day.style.display = 'block';
 				<div class="col-md-1"></div>
 				<div class="col-md-11">
 					<h3>
-						<p>
-						<br>
-						<br>
-	<h3>
-						<p>
 							<br>
 							<button type="button" class="btn" style="width:325px"><h4><%=accHistory.get("12").get(0).get("ACC_NUM") %>&nbsp;거래내역</h4></button>
 							<br>
-						</p>
 					</h3>
 
 	<button type="button" class="btn btn-primary" id="btn_today" name="btn_today">&nbsp;당일&nbsp;</button>		

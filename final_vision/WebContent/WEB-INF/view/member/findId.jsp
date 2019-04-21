@@ -6,7 +6,6 @@
 	<title>아이디 찾기</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<link rel='shortcut icon' href='https://sslimage.gmarket.co.kr/_Net/MyG/favicon/gmarket.ico' />
 	<link rel="apple-touch-icon-precomposed" href='https://sslimage.gmarket.co.kr/_Net/apple-touch-icon-precomposed.png'/>
     <link rel="apple-touch-icon" href='https://sslimage.gmarket.co.kr/_Net/apple-touch-icon.png'/>
 	
@@ -32,22 +31,51 @@
 
 </head>
 <body>
+    
 <script type="text/javascript">
 $(document).ready(function(){
-	var acc_from;
-	$('#smsAuth').on('click', function(){
-		 $.ajax({
-	     	type: 'POST',
-	        url: 'cert',
-	        data: {
-	            "phone_num" : acc_from,
-	        },
-	        success: function(data){
-				
-	        }
-	 	});   
+	var cert_num;
+	 $('#cert_send').on('click', function(){
+	        $.ajax({
+	               type: 'POST',
+	               url: 'cert',
+	               data: {
+	                   "mem_phone" : document.getElementById("mem_phone").value,
+	                   "mem_name" : document.getElementById("mem_name").value,
+	               },
+	               success: function(data){
+	                   if(data != 0){
+	                      alert("인증번호를 발송하였습니다.");
+	                      cert_num = data;
+	                      alert(cert_num);
+	                   }
+	                   else if(data == 0){
+	                      alert("입력한 정보를 다시 확인해주세요.");
+	                   }
+	               }
+	        });   
+	    });/*end of ajax*/
+		 $('#sms_auth_submit').on('click', function(){
+			 	if(cert_num==document.getElementById("p_cert_num").value){
+		        $.ajax({
+		               type: 'POST',
+		               url: 'cert_findId',
+		               data: {
+		                   "mem_phone" : document.getElementById("mem_phone").value,
+		                   "mem_name" : document.getElementById("mem_name").value,
+		               },
+		               success: function(data){
+		                      alert("회원님의 아이디는 [ "+data+" ] 입니다.");
+		                   }
+		        	   });   
+		 		}
+			 	else{	alert("인증번호를 다시 확인해주세요.");
+				 	}
+		    	});/*end of ajax*/
+		
+	
 	});
-});
+
 </script>
 <div id="container">
 	<div id="service-idpwfind" class="contents service-idpwfind">
@@ -63,9 +91,9 @@ $(document).ready(function(){
 			<div id="box-tab-find-id" class="box-tab-idpwfind__contents box-tab-idpwfind__contents--active">
 				<h2 class="forA11y">아이디 찾기</h2>
 					<ul class="list-method-idpwfind uxeslide">
-						<li class="list-method-idpwfind__item list-method-idpwfind__item--active" id="sms" onclick="findID.ui.setActive ('sms');">
+						<li class="list-method-idpwfind__item list-method-idpwfind__item--active" id="sms">
 							<span class="list-method-idpwfind__icon sprite-idpwfind">&nbsp;</span>
-<button class="list-method-idpwfind__button" onclick="return false;">휴대폰으로 찾기</button>
+<button class="list-method-idpwfind__button">휴대폰으로 찾기</button>
 <div class="list-method-idpwfind__content list-method-idpwfind__content--active">
 	<fieldset>
 		<legend class="forA11y">휴대폰으로 찾기 폼</legend>
@@ -76,31 +104,26 @@ $(document).ready(function(){
 						   onclick="smsAuth.event.clearMessages('name');" 
 						   onkeyup="smsAuth.event.clearMessages('name'); smsAuth.event.checkValues('name');"  
 						   onchange="smsAuth.event.clearMessages('name'); smsAuth.event.checkValues('name');" 
-						   id="sms_auth_name_txt" name="sms_auth_name_txt"/>
+						   id="mem_name" name="mem_name"/>
 				</div>
 				<p class="text-validation-error" id="sms_auth_name_err">이름을 입력해주세요.</p>
 			</li>
 			<li class="list-idpwform__item">
 				<div class="box-form-input">
 					<input type="text" class="form-input__idpwfind" placeholder="휴대폰번호(숫자만 입력)" title="휴대폰번호" maxlength="13" 
-						   onclick="smsAuth.event.clearMessages('cellphone');" 
-						   onkeyup="smsAuth.event.clearMessages('cellphone'); smsAuth.event.checkValues('cellphone');" 
-						   onchange="smsAuth.event.clearMessages('cellphone'); smsAuth.event.checkValues('cellphone');"
-						   id="phone_num" name="sms_auth_cell_phone_txt"/>
-					<button class="button-oninput button-get-code" id="smsAuth">인증번호 받기</button>
+						   onKeyup="autoHypenPhone(this);"
+						   id="mem_phone" name="mem_phone"/>
+					<button class="button-oninput button-get-code" id="cert_send">인증번호 받기</button>
 				</div>
 				<p class="text-validation-error" id="sms_auth_cell_phone_err">휴대폰번호를 입력해주세요.</p>
 			</li>
 			<li class="list-idpwform__item">
 				<label class="label-list-idpwform label-list-idpwform--varification" for="sms_auth_authkey_txt" maxlength="6">인증번호</label>
 				<div class="box-form-input">
-					<input type="text" id="sms_auth_authkey_txt" name="sms_auth_authkey_txt" class="form-input__idpwfind form-input__idpwfind--verification-code" maxlength="6" placeholder="6자리 숫자 입력"  
-						   onclick="smsAuth.event.clearMessages('authkey');" 
-						   onkeyup="smsAuth.event.clearMessages('authkey'); smsAuth.event.checkValues('authkey');"
-						   onchange="smsAuth.event.clearMessages('authkey'); smsAuth.event.checkValues('authkey');"/>
+					<input type="text" id="p_cert_num" name="p_cert_num" class="form-input__idpwfind form-input__idpwfind--verification-code" maxlength="6" placeholder="6자리 숫자 입력"/>
 					<span class="box-form-input__time-limit" id="sms_auth_time_txt"></span>
 				</div>
-				<p class="text-validation-error" id="sms_auth_auth_key_err">휴대폰으로 발송된 인증번호를 입력해주세요.</p>
+				<p class="text-validation-error" id="cert_num">휴대폰으로 발송된 인증번호를 입력해주세요.</p>
 			</li>
 		</ul>
 		<div class="box-buttons">
@@ -110,9 +133,10 @@ $(document).ready(function(){
 </div>
 <input type="hidden" id="hdn_request_token_by_sms" name="hdn_request_token_by_sms"/>
 
-
+<script type="text/javascript">
 
 </script>
+
 
 </body>
 </html>

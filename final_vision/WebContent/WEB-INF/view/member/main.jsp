@@ -10,18 +10,68 @@
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/bin.css">
 <title>메인(로그아웃) 페이지</title>
+<script type="text/javascript" src="/js/plax.js"></script>
 </head>
-<body>
 <style type="text/css">
 .jumbotron {
-	background-image: url('/images/vision.gif');
+	background-image: url('/images/배경.jpg');
 	background-size: cover;
 	text-shadow: black 0.2em 0.2em 0.2em;
 	color: white;
 	width: 100%;
-	height: 100%;
+}
+* {
+  margin: 0px;
+  padding: 0px;
+}
+body {
+  position: relative;
+}
+div#shell {
+  display: block;
+  position: relative;
+  margin: 100px auto;
+  width: 318px;
+  height: 318px;
+}
+div#shell{
+  z-index: 1;
+}
+img#plax-logo {
+  position: absolute;
+  top: 125px;
+  left: 90px;
+  z-index: 3;
+}
+img#plax-sphere-1 {
+  position: absolute;
+  z-index: 4;
+  top: 189px;
+  left: 191px;
+}
+img#plax-sphere-2 {
+  position: absolute;
+  z-index: 2;
+  top: 49px;
+  left: 53px;
+}
+img#plax-sphere-3 {
+  position: absolute;
+  top: 35px;
+  left: 32px;
+  z-index: 1;
 }
 </style>
+<body>
+<script type="text/javascript">
+      $(document).ready(function () {
+        $('#plax-sphere-1').plaxify({"xRange":40,"yRange":40})
+        $('#plax-logo').plaxify({"xRange":20,"yRange":20})
+        $('#plax-sphere-2').plaxify({"xRange":10,"yRange":10})
+        $('#plax-sphere-3').plaxify({"xRange":40,"yRange":40,"invert":true})
+        $.plax.enable()
+      })
+    </script>
 	<%
 		//로그인시 mem_id라는 변수에 해당 아이디가 담기고 그렇지 않으면 null값
 		String mem_id = null;
@@ -29,15 +79,14 @@
 		String r_account = null;
 		String r_point = null;
 		String r_mship = null;
-		String r_coupon = null;
 		if (session.getAttribute("mem_id") != null) {
 			mem_id = (String) session.getAttribute("mem_id");
 			r_card = (String) request.getAttribute("r_card");
 			r_account = (String) request.getAttribute("r_account");
 			r_point = (String) request.getAttribute("r_point");
 			r_mship = (String) request.getAttribute("r_mship");
-			r_coupon = (String) request.getAttribute("r_coupon");
 	%>
+	
 	<script type="text/javascript">
 		$(function() {
 			$.ajax({
@@ -100,7 +149,7 @@
 							<ul class="dropdown-menu">
 								<li><a href="../card/card"><img src="/images/card.png"
 										id="imagepreview" style="width: 30px; height: 20px">&nbsp;&nbsp;카드</a></li>
-								<li><a href="../account/account"><img src="/images/account.png"
+								<li><a href="../account/account?mem_id=<%=mem_id%>"><img src="/images/account.png"
 										id="imagepreview" style="width: 30px; height: 20px">&nbsp;&nbsp;계좌</a></li>
 								<li><a href="#"><img
 										src="/images/membership.png" id="imagepreview"
@@ -113,7 +162,8 @@
 										style="width: 30px; height: 20px">&nbsp;&nbsp;카드 추천</a></li>
 								<li><a href="#"><img src="/images/reward.png"
 										id="imagepreview" style="width: 30px; height: 20px">&nbsp;&nbsp;리워즈</a></li>
-							</ul></li>
+							</ul>
+						</li>
 						<li><a href="../pay/payment">VISION 결제</a></li>
 
 						<%
@@ -163,59 +213,60 @@
 		%>
 		<!-- 점보트론 시작 -->
 		<div class="jumbotron">
-			<p class="text-center">
-				<a><IMG SRC="/images/vision_pay.png" ID="IMAGEPREVIEW"
-					style="width: 200px; height: 70px"></a>
-			</p>
-			<p class="text-center">스마트한 당신의 지갑 경험해 보세요.</p>
-			<p class="text-center">
-			</p>
+			<div id="shell">
+			    <img src="/images/visioncard.png" width="150" height="80" id="plax-logo"/>
+			    <img src="/images/moon.png" width="93" height="92" id="plax-sphere-1"/>
+			    <img src="/images/earth.png" width="215" height="215" id="plax-sphere-2"/>
+			    <img src="/images/sun.png" width="93" height="92" id="plax-sphere-3"/>
+			</div>
 		</div>
 		<!-- 점보트론 끝 -->
 		<%
 			} else {
 		%>
 		<div>
-			<!-- 캐러셀 시작 -->
-			<div width="100%">
-				<h2>플래너</h2>
-				<div id="mainCar" style="width: 100%; height: 290px"></div>
-			</div>
-			<br>
-			<!-- 캐러셀 끝 -->
+
 
 			<div class="row">
-			<div class="col-md-4">
-				<p>
-					<a>
-						<button type="button" class="btn btn-info btn-lg"
-							data-toggle="modal" data-target="#myModal"
-							style="background-color: white; color: black; border-color: white;">
-							추천 카드</button>
-					</a>
-				</p>
-			</div>
-				<div class="col-md-4">
-					<h2>지갑</h2>
+				<div class="col-md-5">
+					<!-- 캐러셀 시작 -->
+					<div width="100%">
+						<h2>플래너</h2>
+						<div id="mainCar" style="width: 100%; height: 290px"></div>
+					</div>
+					<br>
+					<!-- 캐러셀 끝 -->
 					<p>
-						<a class="btn btn-default btn-lg" style="border-color: white; width:20%;"
-							href="../card/card"><%=r_card%><br>카드</a> <a>|</a> <a
-							class="btn btn-default btn-lg" style="border-color: white; width:20%;"
-							href="../account/account"><%=r_account%><br>계좌</a>
-						<a>|</a> <a class="btn btn-default btn-lg"
-							style="border-color: white; width:25%;" href="#"><%=r_mship%><br>멤버쉽</a>
-						<a>|</a> <a class="btn btn-default btn-lg"
-							style="border-color: white; width:20%;" href="#"><%=r_coupon%><br>쿠폰
+						<a>
+							<button type="button" class="btn btn-info btn-lg"
+								data-toggle="modal" data-target="#myModal"
+								style="background-color: white; color: black; border-color: white;">
+								추천 카드</button>
 						</a>
 					</p>
 				</div>
 				<div class="col-md-4">
+					<h2>지갑</h2>
+					<p>
+						<a class="btn btn-default btn-lg"
+							style="border-color: white; width: 20%;" href="../card/card"><%=r_card%><br>카드</a>
+						<a>|</a> <a class="btn btn-default btn-lg"
+							style="border-color: white; width: 20%;"
+							href="../account/account?mem_id=<%=mem_id%>"><%=r_account%><br>계좌</a>
+						<a>|</a> <a class="btn btn-default btn-lg"
+							style="border-color: white; width: 25%;" href="#"><%=r_mship%><br>멤버쉽</a>
+						<a>|</a> <a class="btn btn-default btn-lg"
+							style="border-color: white; width: 20%;" href="#">+<br>쿠폰
+						</a>
+					</p>
+				</div>
+				<div class="col-md-3">
 					<h2>리워즈</h2>
-					<p> 
+					<p>
 					<h1><%=r_point%>point
 					</h1>
-					<br> <a class="btn btn-default btn-lg" href="../rewards/couponShop">사용하기</a>
-					<a>|</a> <a class="btn btn-default btn-lg" href="../rewards/couponInven">쿠폰함</a>
+					<br> <a class="btn btn-default btn-lg" href="#">사용하기</a> <a>|</a>
+					<a class="btn btn-default btn-lg" href="#">적립하기</a>
 					</p>
 				</div>
 
