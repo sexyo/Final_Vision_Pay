@@ -143,7 +143,7 @@ input::placeholder {
 <body>
 	<!-- 네비게이션 바 시작 -->
 	<nav class="navbar navbar-default">
-		<div class="container-fluid">
+		<div class="container-fluid"> 
 			<br>
 			<h4>
 				<div class="navbar-header">
