@@ -13,5 +13,6 @@
 		<mapper resource="com/mybatis/mapper/plan.xml"/>
 		<mapper resource="com/mybatis/mapper/recommend.xml"/>
 		<mapper resource="com/mybatis/mapper/rewards.xml"/>
+		<mapper resource="com/mybatis/mapper/pay.xml"/>
 	</mappers>
 </configuration>

@@ -16,4 +16,5 @@
 	<bean id="planLogic" class="com.plan.PlanLogic"/>
 	<bean id="recommendLogic" class="com.recommend.RecommendLogic"/>
 	<bean id="rewardsLogic" class="com.rewards.RewardsLogic"/>
+	<bean id="payLogic" class="com.pay.PayLogic"/>
 </beans>

@@ -47,6 +47,9 @@
 	<bean id="planDao" class="com.plan.PlanDao">
 		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
 	</bean>
+	<bean id="payDao" class="com.pay.PayDao">
+		<property name="sqlSessionTemplate" ref="sqlSessionTemplate"/>
+	</bean>
 	<!-- 
 	myBatis는 자바가 아니므로 클래스를 통해서 객체 주입을 받을 수가 없다.
 	따라서 xml문서를 활용하여 필요한 객체를 주입받고 주입하고 해야함.

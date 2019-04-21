@@ -40,7 +40,6 @@
 	<context:component-scan base-package="com.rewards"/>
 	<context:component-scan base-package="com.pay"/>
 
-
 	<bean id="accountController" class="com.account.AccountController"/>
 	<bean id="cardController" class="com.card.CardController"/>
 	<bean id="memberController" class="com.member.MemberController"/>
@@ -48,8 +47,6 @@
 	<bean id="planController" class="com.plan.PlanController"/>
 	<bean id="recommendController" class="com.recommend.RecommendController"/>
 	<bean id="rewardsController" class="com.rewards.RewardsController"/>
-
-	
 	
 	<!-- 컨트롤계층의 클래스를 url로 요청하기 위해서는 반드시 component-scan태그에 패키지 등록할수 있다. 등록된 패키지만 찾아준다.-->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
