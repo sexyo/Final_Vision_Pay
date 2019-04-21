@@ -12,7 +12,15 @@
 						 ,#{RESULT,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
 						)}
 </insert>
-
+<select id="visionCardAdd" statementType="CALLABLE" parameterType="map">
+	{call proc_visioncard_add(#{p_mem_id,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+							 ,#{p_bin,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+							 ,#{p_acc_num,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+							 ,#{p_vi_day,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+							 ,#{p_pw,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+							 ,#{r_result,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
+							 )}
+</select>
 <select id="cardList" statementType="CALLABLE" parameterType="com.vo.CardVO">
 {call proc_cardList(#{p_mem_id, mode=IN }, 
 #{r_list, mode=OUT, jdbcType=CURSOR, javaType=java.sql.ResultSet, resultMap=r_list})} 

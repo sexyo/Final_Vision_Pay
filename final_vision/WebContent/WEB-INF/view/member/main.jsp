@@ -108,7 +108,7 @@
 								<li><a href="../plan/planList"><img
 										src="/images/planner.png" id="imagepreview"
 										style="width: 30px; height: 20px">&nbsp;&nbsp;플래너</a></li>
-								<li><a href="#"><img
+								<li><a href="../recommend/myRecommendCard"><img
 										src="/images/cardRecommend.png" id="imagepreview"
 										style="width: 30px; height: 20px">&nbsp;&nbsp;카드 추천</a></li>
 								<li><a href="../rewards/couponInven"><img src="/images/reward.png"
@@ -187,9 +187,9 @@
 			<div class="row">
 			<div class="col-md-4">
 				<p>
-					<a>
+					<a href="../recommend/myRecommendCard">
 						<button type="button" class="btn btn-info btn-lg"
-							data-toggle="modal" data-target="#myModal"
+							data-toggle="modal" data-target="#myModal"  
 							style="background-color: white; color: black; border-color: white;">
 							추천 카드</button>
 					</a>

@@ -9,7 +9,6 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -24,11 +23,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.vo.AccountVO;
-import com.vo.MemberVO;
 
 @Controller
 @RequestMapping(value="/account/")
@@ -44,7 +40,18 @@ public class AccountController {
 	int nonce;
 	HttpSession session = null;
 
-	
+	@PostMapping("accountList3")
+	@ResponseBody
+	public List<Map<String,Object>> accountList3(HttpServletRequest req) throws ServletException, IOException {
+		logger.info("accountList3 호출 성공");
+		HttpSession session = req.getSession();
+		String mem_id = (String) session.getAttribute("mem_id");
+		List<Map<String,Object>> accountList = null;
+		logger.info("mem_id:"+mem_id);
+		accountList = accountLogic.accountList3(mem_id);
+		logger.info(accountList.size());
+		return accountList;
+	}
 	@GetMapping("account")
 	public String accountList(Model model, HttpServletRequest req, @RequestParam Map<String,Object> pMap) throws ServletException, IOException {
 		logger.info("accountList 호출 성공");

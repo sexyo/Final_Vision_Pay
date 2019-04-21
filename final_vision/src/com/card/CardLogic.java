@@ -55,5 +55,8 @@ public class CardLogic {
 		detail_card = cardDao.detail_card(cardVO);
 		return detail_card;
 	}
+	public int visionCardAdd(Map<String, Object> pMap) {
+		return cardDao.visionCardAdd(pMap);
+	}
 
 }

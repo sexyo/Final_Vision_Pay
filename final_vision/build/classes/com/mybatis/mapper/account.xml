@@ -27,6 +27,12 @@
 	where ah.acc_rownum in(select max(to_number(acc_rownum)) from acc_history group by acc_num) 
 	and a.mem_id=#{mem_id} and ah.acc_num = a.acc_num order by ah.acc_balance desc
 	</select>
+	<select id="accountList3" parameterType="String"
+		resultType="map">
+		select acc_num, acc_bank, acc_name
+		from account
+		where mem_id = #{mem_id}
+	</select>
 	<select id="acchistory12" parameterType="map" resultType="map">
 	select acc_balance, acc_date, acc_rownum, acc_time, nvl(acc_content,' ') as acc_content, acc_price, acc_num, decode(acc_inout,0,'입금',1,'출금',2,' ') as acc_inout from acc_history
 	where to_date(acc_date,'yyyy/mm/dd') > (select to_char(add_months(sysdate,-12),'yyyy/mm/dd') from dual) 

@@ -30,8 +30,10 @@ public class AccountLogic {
 		 int accTransfer = accountDao.accTransfer(pMap);
 		return accTransfer;
 	}
-
-
+	public List<Map<String, Object>> accountList3(String mem_id) {
+	List<Map<String,Object>> accountList = accountDao.accountList3(mem_id);
+	return accountList;
+}
 	
 
 }

@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*,java.net.URLDecoder" %>   
+<%
+	String paypw = (String)request.getAttribute("card_pw");
+%>
 <!doctype html>
 <html>
 <head>
@@ -19,13 +23,25 @@ background-color: #e0f2f1;
 	 }
 	 .cryxpad-container{ background-color: #e0f2f1;
 	 }
-	 	
-	 
 </style>
+<script type="text/javascript">
+function passwordCheck(){
+	var pass1 = document.getElementById("cryxpad-input-field").value;
+	var pass2 = <%= paypw %>;
+	if(pass1 == pass2){
+		alert("비밀번호가 확인되었습니다.");
+		location.href="naversearchapp://search?qmenu=qrcode&version=3"
+	}else{
+		alert("비밀번호를 다시 입력해주세요.");
+	}
+}
+</script>
 </head>
 <body>
+<form action="complete" method="POST" id="c_pass">
+	<input type="hidden" name="card_num" value="<%=paypw%>">
+</form>
 <div class="jquery-script-center">
-
 <script type="text/javascript"
 src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script></div>
@@ -46,13 +62,13 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 		<div class="cryxpad-clavier">
 			<div class="row" style="left: -50%;position: relative;margin-top: 20px;">
 				<div class="col">
-					<button id="cryxpad-validate-btn" class="btn btn-primary" type="button" style="width: 100px" >입력</button>
+					<button id="cryxpad-validate-btn" name="cryxpad-validate-btn" class="btn btn-primary" type="button" onClick="passwordCheck()" style="width: 100px" >입력</button>
 					<button id="cryxpad-remove-btn" type="button" class="btn btn-danger" style="width: 100px ">삭제</button>
 				</div>
 			</div>
-				    <a href="naversearchapp://search?qmenu=qrcode&version=3"> 				
-				    <button type="button" class="btn btn-info">카메라</button>
-</a>
+<!-- <a href="naversearchapp://search?qmenu=qrcode&version=3"> -->
+<!-- <button type="button" class="btn btn-info">카메라</button> -->
+<!-- </a> -->
 		</div>			
 		</div>
 	</div>
@@ -60,7 +76,7 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 <!-- <script  src="jquery.min.js"></script> -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script  src="/js/jquery.cryxpad.js"></script>
+<script  src="js/jquery.cryxpad.js"></script>
 <script type="text/javascript">
 	$(function(){
 		//Appel par défaut du plug-in
@@ -74,14 +90,9 @@ src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
 		});
 	});
 
-//Effacer saisie....
-</script>
-	<script type="text/javascript">
-		setTimeout(function () {
-			location.reload();
-		}, 180* 1000);
-</script>
-<script type="text/javascript">
+	setTimeout(function () {
+		location.reload();
+	}, 180* 1000);
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36251023-1']);

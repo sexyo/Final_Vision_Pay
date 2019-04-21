@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="accountMapper">
+	<select id="card" parameterType="map" resultType="map">
+		select card_pay_pw,mem_id ,card_num,card_limit,seq_blockchain_no.nextval chainno
+		  from creditcard
+		 where card_num = #{card_num}
+	</select>
+	<select id="paypw" parameterType="map" resultType="java.lang.String">
+		select card_pay_pw
+		from creditcard
+		where card_num = #{card_num}
+	</select>
+	<select id="store" parameterType="map" resultType="map">
+          select c.cate_name, b.brand_name, a.store_num
+          from store a,brand b,category c
+          where store_name = #{store_name}
+          and a.brand_num = b.brand_num 
+          and c.cate_num = b.cate_num
+	</select>
+	<select id="PROC_PAYMENT" parameterType="map" statementType="CALLABLE">
+		{call PROC_PAYMENT(#{card_num,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						  ,#{store_num,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						  ,#{hash,mode=IN,jdbcType=VARCHAR,javaType=java.lang.String}
+						  ,#{amount,mode=IN,jdbcType=INTEGER,javaType=java.lang.Integer}
+						  ,#{result,mode=OUT,jdbcType=INTEGER,javaType=java.lang.Integer}
+						  )}
+	</select>
+	<select id="hashList" parameterType="java.lang.String" resultType="java.lang.String">
+		select pay_hash
+		  from payment
+		 where card_num = #{card_num}
+	</select>
+</mapper>
