@@ -224,7 +224,7 @@ v_3day.style.display = 'block';
 				<div class="col-md-11">
 					<h3>
 							<br>
-							<button type="button" class="btn" style="width:325px"><h4><%=accHistory.get("12").get(0).get("ACC_NUM") %>&nbsp;거래내역</h4></button>
+							<button type="button" class="btn" style="width:100%"><h4><%=accHistory.get("12").get(0).get("ACC_NUM") %>&nbsp;거래내역</h4></button>
 							<br>
 					</h3>
 

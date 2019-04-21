@@ -100,6 +100,9 @@ img#plax-sphere-3 {
 				}
 			});
 		});
+		function goRecommend(){
+		location.href="../recommend/myRecommendCard";
+			}
 	</script>
 	<%
 		}
@@ -189,7 +192,7 @@ img#plax-sphere-3 {
 									} else {
 								%>
 								<li><a href="#">내계정</a></li>
-								<li><a href="logout">로그아웃</a></li>
+								<li><a href="../member/logout">로그아웃</a></li>
 								<%
 									}
 								%>
@@ -238,27 +241,12 @@ img#plax-sphere-3 {
 					</div>
 					<br>
 					<!-- 캐러셀 끝 -->
-<!-- 			<div class="col-md-4"> -->
-<!-- 				<p> -->
-<!-- 					<a href="../recommend/myRecommendCard"> -->
-<!-- 						<button type="button" class="btn btn-info btn-lg" -->
-<!-- 							data-toggle="modal" data-target="#myModal"   -->
-<!-- 							style="background-color: white; color: black; border-color: white;"> -->
-<!-- 							추천 카드</button> -->
-<!-- 					</a> -->
-<!-- 				</p> -->
-<!-- 			</div> -->
-<!-- 				<div class="col-md-4"> -->
-<!-- 					<h2>지갑</h2> -->
 					<p>
-						<a class="btn btn-default btn-lg" style="border-color: white; width:20%;"
-							href="../card/card"><%=r_card%><br>카드</a> <a>|</a> <a
-							class="btn btn-default btn-lg" style="border-color: white; width:20%;"
-							href="../account/account"><%=r_account%><br>계좌</a>
-						<a>|</a> <a class="btn btn-default btn-lg"
-							style="border-color: white; width:25%;" href="../membership/mshipList"><%=r_mship%><br>멤버쉽</a>
-						<a>|</a> <a class="btn btn-default btn-lg"
-							style="border-color: white; width:20%;" href="../rewards/couponInven"><%=r_coupon%><br>쿠폰
+						<a>
+							<button type="button" class="btn btn-info btn-lg"
+								onClick="goRecommend();"
+								style="background-color: white; color: black; border-color: white;">
+								추천 카드</button>
 						</a>
 					</p>
 				</div>
@@ -271,9 +259,9 @@ img#plax-sphere-3 {
 							style="border-color: white; width: 20%;"
 							href="../account/account?mem_id=<%=mem_id%>"><%=r_account%><br>계좌</a>
 						<a>|</a> <a class="btn btn-default btn-lg"
-							style="border-color: white; width: 25%;" href="#"><%=r_mship%><br>멤버쉽</a>
+							style="border-color: white; width: 25%;" href="../membership/mshipList"><%=r_mship%><br>멤버쉽</a>
 						<a>|</a> <a class="btn btn-default btn-lg"
-							style="border-color: white; width: 20%;" href="#">+<br>쿠폰
+							style="border-color: white; width: 20%;" href="../rewards/couponInven"><%=r_coupon %><br>쿠폰
 						</a>
 					</p>
 				</div>
@@ -282,8 +270,8 @@ img#plax-sphere-3 {
 					<p>
 					<h1><%=r_point%>point
 					</h1>
-					<br> <a class="btn btn-default btn-lg" href="#">사용하기</a> <a>|</a>
-					<a class="btn btn-default btn-lg" href="#">적립하기</a>
+					<br> <a class="btn btn-default btn-lg" href="../rewards/couponShop">사용하기</a> <a>|</a>
+					<a class="btn btn-default btn-lg" href="../rewards/couponInven">적립하기</a>
 					</p>
 				</div>
 

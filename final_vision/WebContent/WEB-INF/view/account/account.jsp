@@ -247,7 +247,7 @@ $(document).ready(function(){
             <div class="col-md-12">
                      <h2>                  
                      <br>
-                     <button type="button" class="btn" style="width:100%">계좌리스트</button>         
+                     <button type="button" class="btn" style="width:100%"><h4>계좌리스트</h4></button>         
                </h2>
                
 <%
