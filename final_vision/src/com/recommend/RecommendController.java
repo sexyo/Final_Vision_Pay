@@ -6,13 +6,13 @@ import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
@@ -26,9 +26,8 @@ public class RecommendController {
 	public String myRecommendCard(Model model, HttpServletRequest req) throws ServletException, IOException {
 		//나의 추천카드 추천
 		logger.info("myRecommendCard 호출 성공");
-//		HttpSession session = req.getSession();
-//		String mem_id = (String) session.getAttribute("mem_id");
-		String mem_id ="elesex";
+		HttpSession session = req.getSession();
+		String mem_id = (String) session.getAttribute("mem_id");
 		List<Map<String,Object>> recommendList = null;
 		logger.info("mem_id:"+mem_id);
 		recommendList = recommendLogic.myRecommendCard(mem_id);
