@@ -9,6 +9,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <link rel="stylesheet" href="/css/bootstrap.css">
 <link rel="stylesheet" href="/css/bin.css">
+<script src="/js/bootstrap.js"></script>
 <%
 	PlanVO planVO = (PlanVO) session.getAttribute("planVO");
 	String mem_id= (String) session.getAttribute("mem_id");
@@ -161,7 +162,7 @@ var mem_id ="<%=mem_id%>"
 			<div class="navbar-header">
 				<h4>
 					<a class="navbar-brand" style="color: #ffffff; height: 25px"
-						href="../member/index"><</a> <a class="navbar-brand" href="#">
+						href="../member/index"><</a> <a class="navbar-brand" href="../plan/planList">
 						<img src="/images/VISION2.png" id="imagepreview"
 						style="width: 110px; height: 35px" align="left">&nbsp;플래너
 					</a>
@@ -239,10 +240,13 @@ var mem_id ="<%=mem_id%>"
 	</div> 
 	</div>
 </div>
+<br>
+<br>
+<br>
+
 	<!-- 플래너2 끝 -->
 	<!-- 푸터 시작 -->
 	<%@ include file="../include/footer.jsp" %>
 	<!-- 푸터 끝 -->
 </body>
-<script src="/js/bootstrap.js"></script>
 </html>

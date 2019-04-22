@@ -334,7 +334,7 @@ input::placeholder {
 					<div>자동차 관련 매장  - 5% 적립</div>
 				</div>
 				<div class="modal-footer">
-					<a href="#" class="list-group-item"style="text-align: center; background-color:#FF8E99; margin-bottom:5px;"><span style="color:#000000; font-weight: bold;">계좌 추가하러 가기</span></a> 
+					<a href="../account/account" class="list-group-item"style="text-align: center; background-color:#FF8E99; margin-bottom:5px;"><span style="color:#000000; font-weight: bold;">계좌 추가하러 가기</span></a> 
 					<div class="dropdown">
 						<button class="btn btn-default dropdown-toggle form-control"
 							style='width: 100%;' id="dropdownMenu1" data-toggle="dropdown">

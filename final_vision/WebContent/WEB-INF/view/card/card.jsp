@@ -1,12 +1,12 @@
  <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, java.util.*" %>
 <%@page import="java.text.SimpleDateFormat" %>
 <!DOCTYPE html>
 <%
-	List<Map<String,Object>> cardAllList = (List<Map<String,Object>>)request.getAttribute("cardAllList");
-	List<Map<String,Object>> allCard = (List<Map<String,Object>>)request.getAttribute("allCard");
-	List<Map<String,Object>> detail_card = (List<Map<String,Object>>)request.getAttribute("detail_card");
+   List<Map<String,Object>> cardAllList = (List<Map<String,Object>>)request.getAttribute("cardAllList");
+   List<Map<String,Object>> allCard = (List<Map<String,Object>>)request.getAttribute("allCard");
+   List<Map<String,Object>> detail_card = (List<Map<String,Object>>)request.getAttribute("detail_card");
 %>
 <html>
 <meta charset="UTF-8">
@@ -33,12 +33,12 @@ var frame; //iframe을 담아둘 변수
 
         }
         function keyCheck(objName,objSize,nextObjName){
-    		if(objName.value.length==objSize){
-	    		nextObjName.focus();
-	    		return;
-    		}
-		
-    	}       
+          if(objName.value.length==objSize){
+             nextObjName.focus();
+             return;
+          }
+      
+       }       
 </script>   
 <style>
 .detail_card{border:0}
@@ -47,17 +47,17 @@ var frame; //iframe을 담아둘 변수
 </head>
 <body>
 <%
-	String mem_id = (String)session.getAttribute("mem_id");
+   String mem_id = (String)session.getAttribute("mem_id");
 %>
 
 <script type="text/javascript">
 $(document).ready(function(){
-	$(this).find('#acc_name').focus();
+   $(this).find('#acc_name').focus();
     $('#btn_cardAdd').on('click', function(){
-		var cardnum = $("#cardnum1").val()
-		             +""+$("#cardnum2").val()
-		             +""+$("#cardnum3").val()
-		             +""+$("#cardnum4").val();
+      var cardnum = $("#cardnum1").val()
+                   +""+$("#cardnum2").val()
+                   +""+$("#cardnum3").val()
+                   +""+$("#cardnum4").val();
         var pwnum = $("#pwnum").val();
         var param = "mem_id=<%=mem_id%>";
             param+= "&cardnum="+cardnum+"&pwnum="+pwnum;
@@ -96,23 +96,23 @@ v_usecard.style.display = 'block';
 v_allcard.style.display = 'none';
 
 
-	$("#btn_useCard").click(function(){
-		v_usecard.style.display = 'block';
-		v_allcard.style.display = 'none';
+   $("#btn_useCard").click(function(){
+      v_usecard.style.display = 'block';
+      v_allcard.style.display = 'none';
 
-	  });
-	  $("#btn_allCard").click(function(){
-			v_usecard.style.display = 'none';
-			v_allcard.style.display = 'block';
+     });
+     $("#btn_allCard").click(function(){
+         v_usecard.style.display = 'none';
+         v_allcard.style.display = 'block';
 
-	  });
-	/*   $("#detail_card").click(function(){
-		  var i = document.getElementById("detail_card").value;
-		  location.href="detail_card?card_num="+i;
-		
-	  }); */
-	  
-	}); 
+     });
+   /*   $("#detail_card").click(function(){
+        var i = document.getElementById("detail_card").value;
+        location.href="detail_card?card_num="+i;
+      
+     }); */
+     
+   }); 
 </script>
 <!-- 네비게이션 바 시작 -->
    <nav class="navbar navbar-default">
@@ -147,134 +147,136 @@ v_allcard.style.display = 'none';
    </nav>
    <!-- 네비게이션 바 끝 -->
 <!--카드리스트 시작 ^^!!  -->
-	<div class="container">
-		<div class="row">
-			<div class="col-12">
-				<div class="col-md-12">
-				    <h2>                  
-					<button id="btn_useCard" name="btn_useCard" type="button"
-						class="btn" style="width: 150px">이번 달 사용카드</button>
-					<button id="btn_allCard" name="btn_allCard" type="button"
-						class="btn" style="width: 150px">나의 카드 목록</button>
-					<br><br>
-					</h2>
-					<div id="use">
+   <div class="container">
+      <div class="row">
+         <div class="col-12">
+            <div class="col-md-12">
+                <h2>                  
+               <button id="btn_useCard" name="btn_useCard" type="button"
+                  class="btn" style="width: 150px">이번 달 사용카드</button>
+               <button id="btn_allCard" name="btn_allCard" type="button"
+                  class="btn" style="width: 150px">나의 카드 목록</button>
+               <br><br>
+               </h2>
+               <div id="use">
 <%
-	if (cardAllList != null) {
-		for (int i = 0; i < cardAllList.size(); i++) {
+   if (cardAllList != null) {
+      for (int i = 0; i < cardAllList.size(); i++) {
 %>
-						<div class="media">
-							<div class="media-left">
-								<form id="detail_card" name="detail_card" method="post"
-									action="detail_card?card_num=<%=cardAllList.get(i).get("CARD_NUM")%>">
-									<table style="width: 40%;">
-										<tr>
-											<td >
-												<button  class="btn" type="submit" id="detail_card"
-													"value="<%=cardAllList.get(i).get("CARD_NUM")%>" >
-													<img
-														src="/images/<%=cardAllList.get(i).get("BIN_COMPANY")%>.png"
-														style="width: 150px; height: 100px;">
-
-												</button>
-											</td>
-										</tr>
-									</table>
-								</form>
-							</div>
-							<div class="media-body">
-								<h4 class="media-heading"></h4>
-								<form id="detail_card" name="detail_card" method="post"
-									action="detail_card?card_num=<%=cardAllList.get(i).get("CARD_NUM") %>">
-									<table style="width: 40%">
-										<tr>
-										<td align=center colspan="2" style="color: #4374D9; font-size: 120%; background-color: #D8D8D8;">
-											<%=cardAllList.get(i).get("BIN_NAME") %></td>
-									    </tr>
-										<tr>
-											<td align=center
-												style="color: orange;"
-												height="40px" colspan="2"><%=cardAllList.get(i).get("BIN_COMPANY")%></td>
-										</tr>
-										<tr>
-											<td colspan="2" align=center>카드번호:&nbsp;&nbsp;<%=cardAllList.get(i).get("CARD_NUM") %></td>
-										</tr>
-										<tr>
-											<td>&nbsp;&nbsp;이달의 사용금액</td>
-											<td style="text-align: right; color: blue;">&nbsp;<%=cardAllList.get(i).get("PH_PRICE")%>원
-											</td>
-										</tr>
-										<tr>
-											<td >
-												<button  class="btn" type="submit" id="detail_card"
-													"value="<%=cardAllList.get(i).get("CARD_NUM")%>" style="width: 100px; border-color: #000000; background-color: #4374D9; color: #ffffff">거래내역
-												</button>
-											</td>
-										</tr>
-										
-									</table>
-								</form>
-							</div>
-						</div>
-						<%			
-		}
-	}
+                  <div class="media">
+                     <div class="media-left">
+                        <form id="detail_card" name="detail_card" method="post"
+                           action="detail_card?card_num=<%=cardAllList.get(i).get("CARD_NUM")%>">
+                           <table style="width: 40%;">
+                              <tr>
+                                 <td >
+                                    <input type="image" class="btn" id="detail_card" 
+                                          src="/images/<%=cardAllList.get(i).get("BIN_COMPANY")%>.png"
+                                          style="width: 150px; height: 100px; border: 0;"
+                                       value="<%=cardAllList.get(i).get("CARD_NUM")%>" />
+                                 </td>
+                              </tr>
+                           </table>
+                        </form>
+                     </div>
+                     <div class="media-body">
+                        <form id="detail_card" name="detail_card" method="post"
+                           action="detail_card?card_num=<%=cardAllList.get(i).get("CARD_NUM") %>">
+                           <table style="width: 40%">
+                              <tr>
+                              <td align=center colspan="2" style="color: #4374D9; font-size: 120%; background-color: #D8D8D8;">
+                                 &nbsp;<%=cardAllList.get(i).get("BIN_NAME") %>&nbsp;(<%=cardAllList.get(i).get("BIN_COMPANY")%>)</td>
+                               </tr>
+                              <tr>   
+                                 <td colspan="2" align=center style="text-align: left; color: blue;">&nbsp;<%=cardAllList.get(i).get("CARD_NUM") %></td>
+                              </tr>
+                              <tr>
+                                 <td>&nbsp;이달의 사용금액</td>
+                              </tr>
+                              <tr>   
+                                 <td style="text-align: left; color: blue;">&nbsp;<%=cardAllList.get(i).get("PH_PRICE")%>원
+                                 </td>
+                              </tr>
+                              <tr>
+                                 <td >
+                                    <button  class="btn" type="submit" id="detail_card"
+                                       value="<%=cardAllList.get(i).get("CARD_NUM")%>" style="width: 100px; border-color: #000000; background-color: #4374D9; color: #ffffff">거래내역
+                                    </button>
+                                 </td>
+                              </tr>
+                              
+                           </table>
+                        </form>
+                     </div>
+                  </div>
+                  <%         
+      }
+   }
 %>
-					</div>
+               </div>
 
-					<div id="all">
-						<%
+               <div id="all">
+                  <%
 
-	if(allCard!=null){
-		for(int i=0;i<allCard.size();i++){
+   if(allCard!=null){
+      for(int i=0;i<allCard.size();i++){
 %>
-						<div class="media">
-							<div class="media-left"></div>
-							<div class="media-body">
-								<h4 class="media-heading"></h4>
-								<form id="all_card" name="all_card" method="post"
-									action="../pay/payment?card_num=<%=allCard.get(i).get("CARD_NUM") %>&bin_company=<%=allCard.get(i).get("BIN_COMPANY") %>">
-									<table style="width: 40%">
-										<tr>
-											<td rowspan="3"><input type="image" img
-												src="/images/<%=allCard.get(i).get("BIN_COMPANY") %>.png"
-												style="width: 150px; height: 100px"
-												value="<%=allCard.get(i).get("CARD_NUM") %>">
-											<td colspan="2" align=center
-												style="color: orange; font-size: 120%; background-color: grey">
-												<%=allCard.get(i).get("BIN_NAME") %></td>
-										</tr>
-										<tr>
-											<td colspan="2" align=center
-												style="color: orange; background-color: #D8D8D8"
-												height="40px"><%=allCard.get(i).get("BIN_COMPANY") %></td>
-										</tr>
-										<tr>
-											<td colspan="2" align=center>카드번호:&nbsp;&nbsp;<%=allCard.get(i).get("CARD_NUM") %></td>
-										</tr>
-									</table>
-								</form>
-							</div>
-						</div>
+                  <div class="media">
+                     <div class="media-left">
+                     <form id="all_card" name="all_card" method="post"
+                           action="../pay/payment?card_num=<%=allCard.get(i).get("CARD_NUM") %>&bin_company=<%=allCard.get(i).get("BIN_COMPANY") %>">
+                        <table style="width: 40%">
+                           <tr>
+                              <td ><input type="image" class="btn" src="/images/<%=allCard.get(i).get("BIN_COMPANY") %>.png"
+                                    style="width: 150px; height: 100px;border: 0;"   value="<%=allCard.get(i).get("CARD_NUM") %>">
+                                 
+                              </td>
+                           </tr>
+                        </table>
+                     </form>
+                     </div>
+                     <div class="media-body">
+                        <h4 class="media-heading"></h4>
+                        <form id="all_card" name="all_card" method="post"
+                           action="../pay/payment?card_num=<%=allCard.get(i).get("CARD_NUM") %>&bin_company=<%=allCard.get(i).get("BIN_COMPANY") %>">
+                           <table style="width: 40%">
+                              <tr>
+                              <td colspan="2" align=center
+                                    style="color: #4374D9; font-size: 120%; background-color: #D8D8D8;">
+                                    &nbsp;<%=allCard.get(i).get("BIN_NAME") %> &nbsp;(<%=allCard.get(i).get("BIN_COMPANY") %>)</td>
+                              </tr>
+                              <tr>
+                                 <td colspan="2" align=center>&nbsp;&nbsp;<%=allCard.get(i).get("CARD_NUM") %></td>
+                              </tr>
+                              <tr>
+                              <td >
+                              <button  class="btn" type="submit" style="width: 100px; border-color: #000000; background-color: #4374D9; color: #ffffff" value="<%=allCard.get(i).get("CARD_NUM") %>">
+                                                                        결제</button>
+                                    
+                                 
+                              </td>
+                           </tr>
+                           </table>
+                        </form>
+                     </div>
+                  </div>
 
-						<%			
-		}
-	}
+                  <%         
+      }
+   }
 %>
-					</div>
-					</p>
-					</h3>
-				</div>
-			</div>
-		</div>
-		<hr>
-	</div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <hr>
+   </div>
 
-	<!--카드리스트 끗!!  -->
-	<!-- 푸터 시작 -->
-	<%@ include file="../include/footer.jsp" %>	
-	<!-- 푸터 끝 -->
-	<!-- Modal -->
+   <!--카드리스트 끗!!  -->
+   <!-- 푸터 시작 -->
+   <%@ include file="../include/footer.jsp" %>   
+   <!-- 푸터 끝 -->
+   <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -284,7 +286,7 @@ v_allcard.style.display = 'none';
         </button>
         <h5 class="modal-title" id="exampleModalLabel">카드 추가하기</h5>
       </div>
-	<div class="modal-body">
+   <div class="modal-body">
        <div class="form-group"> <label for="foo">카드번호</label></div>
         <div class="form-group row">
             <div class="col-md-3">
@@ -299,27 +301,27 @@ v_allcard.style.display = 'none';
             <div class="col-md-3">
                 <input type="text"  class="form-control" id="cardnum4" size="4" maxlength="4" onkeyup="javascript:keyCheck(this,this.size,document.getElementById('pwnum'));">
             </div>
-       </div>   	  		<br>
+       </div>              <br>
        
        <div class="form-group"><label for="foo">카드비밀번호(6자리)</label></div> 
                <div class="form-group row">
        
          
-	        <div class="col-md-3">
-	                    <input type="text"  class="form-control" id="pwnum" size="6" maxlength="6">
-	                </div> 
-	        <div class="col-md-3">
-	                </div> 
-	        <div class="col-md-3">
-	                </div> 
-	        <div class="col-md-3">
-	                </div> 
-	         
+           <div class="col-md-3">
+                       <input type="text"  class="form-control" id="pwnum" size="6" maxlength="6">
+                   </div> 
+           <div class="col-md-3">
+                   </div> 
+           <div class="col-md-3">
+                   </div> 
+           <div class="col-md-3">
+                   </div> 
+            
         </div>
          <div class="modal-footer">
          <button id="btn_cardAdd" name="btn_cardAdd" type="button" class="btn btn-primary">추가</button>
       </div>
-	</div>
+   </div>
      
     </div>
   </div>

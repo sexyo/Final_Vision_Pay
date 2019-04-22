@@ -112,28 +112,7 @@ public class PayController {
 		}else {
 			logger.info("결제 실패");
 		}
-		session = req.getSession();
-		String mem_id = (String) session.getAttribute("mem_id");
-		if (mem_id == null) {
-			path = "member/main";
-		} else if (mem_id != null) {
-			pMap.put("mem_id", mem_id);
-			Map<String, Object> refresh = null;
-			refresh = memberLogic.refresh(pMap);
-			String r_card = String.valueOf(refresh.get("R_CARD"));
-			String r_account = String.valueOf(refresh.get("R_ACCOUNT"));
-			String r_point = String.valueOf(refresh.get("R_POINT"));
-			String r_mship = String.valueOf(refresh.get("R_MSHIP"));
-			String r_coupon = String.valueOf(refresh.get("R_COUPON"));
-			model.addAttribute("r_card", r_card);
-			model.addAttribute("r_account", r_account);
-			model.addAttribute("r_point", r_point);
-			model.addAttribute("r_mship", r_mship);
-			model.addAttribute("r_coupon", r_coupon);
-			logger.info(refresh);
-			path = "member/main";
-		}
-		path="member/main";
+		path="pay/mainGo";
 		return path;
 	}
 	@RequestMapping(value = "info", method = {RequestMethod.GET, RequestMethod.POST})

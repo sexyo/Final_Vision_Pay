@@ -95,7 +95,7 @@
 								<li class="list-pw-set-caution__item"><span class="list-pw-set-caution__item-icon">&nbsp;</span>아이디, 생일, 전화번호 등 개인정보 사용불가</li>
 							</ul>
 								<div class="box-buttons">
-								<button type="button" class="button-idpw button-idpw-primary" id="gogo" onClick="gogo();">비번바꾸기</button>
+								<button type="button" class="button-idpw button-idpw-primary" id="gogo" onClick="gogo();">비밀번호 변경</button>
 							</div>
 						</fieldset>
 					</div>
