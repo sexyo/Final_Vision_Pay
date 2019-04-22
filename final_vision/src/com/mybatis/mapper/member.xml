@@ -16,7 +16,7 @@
 		<select id="refresh" parameterType="map" resultType="map">
 		select mem_id, mem_name, mem_gen, 
 		(select count(rownum) from account where mem_id = #{mem_id}) as r_account,
-		((select count(rownum) from creditcard where mem_id = #{mem_id})+
+		((select count(rownum) from creditcard where mem_id = #{mem_id}),
 		(select count(rownum) from visioncard where acc_num in (select acc_num from account where mem_id = #{mem_id}))) as r_card, 
 		(select vi_point from vision_point where mem_id = #{mem_id}) as r_point,
 		(select count(rownum) from mshipcard where mem_id = #{mem_id}) as r_mship,
