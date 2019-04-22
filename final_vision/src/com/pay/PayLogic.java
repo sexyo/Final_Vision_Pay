@@ -50,6 +50,9 @@ logger.info("남은 금액 "+ balance);
 		pMap.put("mem_id", paypw.get("MEM_ID"));
 logger.info(pMap);
 		List<String> hashList = payDao.hashList(pMap.get("card_num").toString());
+		if(hashList.size()==0) {
+			hashList.add(DigestUtils.sha256Hex(paypw.get("MEM_ID").toString()+paypw.get("CARD_NUM")));
+		}
 logger.info(hashList);
 		w = new Wellet(pMap,hashList);
 		wellList.add(w);
@@ -99,10 +102,10 @@ logger.info(sb.toString());
 		}else {
 			p_hash = "";
 		}
-		if(wellList.get(wellList.size()-1).hashList.size()==0) {
+		if(wellList.get(wellList.size()-1).hashList.size()==1) {
 			logger.info("첫 결제 완료");
 			insertPay =payDao.insertPay(wellList.get(wellList.size()-1).info);
-		} else if(wellList.get(wellList.size()-1).hashList.size()>0) { 
+		} else if(wellList.get(wellList.size()-1).hashList.size()>2) { 
 			if(wellList.get(wellList.size()-1).hashList.get(wellList.get(wellList.size()-1).hashList.size()-1).equals(completes[9])) {
 				logger.info("블럭 비교 후 결제 완료");
 				logger.info(wellList.get(wellList.size()-1).hashList.get(wellList.get(wellList.size()-1).hashList.size()-1));

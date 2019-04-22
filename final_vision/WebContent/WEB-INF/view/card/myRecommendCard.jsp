@@ -107,7 +107,7 @@ function cdRequest(in_name,p_bin){//카드 추가 시도
 	in_name = in_name;
 	cd_pw = String($('#'+in_name).val());
 	cd_day = $('#'+in_name+"_day").val();
-	alert(cd_pw.length);
+	//alert(cd_pw.length);
 	if(acc_num_sel==null){
 		alert(" 계좌를 선택하여 주세요. ");
 		}

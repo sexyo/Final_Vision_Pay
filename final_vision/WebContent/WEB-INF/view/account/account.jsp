@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="java.util.Map, java.util.List" %>        
+<%@ page import="java.util.Map, java.util.List" %>
+<%@page import="java.text.DecimalFormat"%>
 <%
 String mem_id = (String)session.getAttribute("mem_id");
 List<Map<String,Object>> accountList = (List<Map<String,Object>>)request.getAttribute("accountList");
+DecimalFormat formatter = new DecimalFormat("##,###,###,###");
 %>
 <!DOCTYPE html>
 <html>
@@ -289,8 +291,8 @@ $(document).ready(function(){
 									</tr>
 									<tr>
 										<td>&nbsp;&nbsp;잔액</td>
-										<td style="text-align: right; color: blue;"><%=accountList.get(i).get("ACC_BALANCE") %><s2>원</s2></td>
-									</tr>
+										<td style="text-align: right; color: blue;"><%=formatter.format(accountList.get(i).get("ACC_BALANCE")) %><s2>원</s2></td>
+									</tr>												
 									<tr>
 										<td><button id="btn_acc_history" name="btn_acc_history"
 												type="submit" class="btn"

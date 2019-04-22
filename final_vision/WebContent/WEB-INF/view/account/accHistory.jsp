@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="java.util.*" %>
@@ -27,6 +28,7 @@ String sixMonth = new java.text.SimpleDateFormat("yyyy년 MM월 dd일").format(s
 Calendar oneYear = Calendar.getInstance();
 oneYear.add(Calendar.MONTH , -12);
 String oneYearago = new java.text.SimpleDateFormat("yyyy년 MM월 dd일").format(oneYear.getTime());
+DecimalFormat formatter = new DecimalFormat("##,###,###,###");
 %>
 
 <!DOCTYPE html>
@@ -249,17 +251,17 @@ if(accHistory.get("3day").size()>0){
 <%
 	if(accHistory.get("3day").get(i).get("ACC_INOUT").equals("입금")){
 %>		
-      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("3day").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("3day").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("3day").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("3day").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%	
 	}else if(accHistory.get("3day").get(i).get("ACC_INOUT").equals("출금")){
 %>
-      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("3day").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("3day").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("3day").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("3day").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%		
 	}
 %>      	
       	</tr>
       	<tr>
-      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=accHistory.get("12").get(i).get("ACC_BALANCE") %>원</td>
+      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=formatter.format(accHistory.get("3day").get(i).get("ACC_BALANCE")) %>원</td>
       	</tr>
 <% 
 	}
@@ -285,17 +287,17 @@ if(accHistory.get("12").size()>0){
 <%
 	if(accHistory.get("12").get(i).get("ACC_INOUT").equals("입금")){
 %>		
-      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("12").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("12").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("12").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("12").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%	
 	}else if(accHistory.get("12").get(i).get("ACC_INOUT").equals("출금")){
 %>
-      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("12").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("12").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("12").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("12").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%		
 	}
 %>      	
       	</tr>
       	<tr>
-      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=accHistory.get("12").get(i).get("ACC_BALANCE") %>원</td>
+      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=formatter.format(accHistory.get("12").get(i).get("ACC_BALANCE")) %>원</td>
       	</tr>
 <% 
 	}
@@ -321,17 +323,17 @@ if(accHistory.get("1").size()>0){
 <%
 	if(accHistory.get("1").get(i).get("ACC_INOUT").equals("입금")){
 %>		
-      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("1").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("1").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("1").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("1").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%	
 	}else if(accHistory.get("1").get(i).get("ACC_INOUT").equals("출금")){
 %>
-      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("1").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("1").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("1").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("1").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%		
 	}
 %>      	
       	</tr>
       	<tr>
-      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=accHistory.get("1").get(i).get("ACC_BALANCE") %>원</td>
+      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=formatter.format(accHistory.get("1").get(i).get("ACC_BALANCE")) %>원</td>
       	</tr>
 <% 
 	}
@@ -357,17 +359,17 @@ if(accHistory.get("3").size()>0){
 <%
 	if(accHistory.get("3").get(i).get("ACC_INOUT").equals("입금")){
 %>		
-      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("3").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("3").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("3").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("3").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%	
 	}else if(accHistory.get("3").get(i).get("ACC_INOUT").equals("출금")){
 %>
-      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("3").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("3").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("3").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("3").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%		
 	}
 %>         	
       	</tr>
       	<tr>
-      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=accHistory.get("3").get(i).get("ACC_BALANCE") %>원</td>
+      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=formatter.format(accHistory.get("3").get(i).get("ACC_BALANCE")) %>원</td>
       	</tr>
 <% 
 	}
@@ -393,17 +395,17 @@ if(accHistory.get("6").size()>0){
 <%
 	if(accHistory.get("6").get(i).get("ACC_INOUT").equals("입금")){
 %>		
-      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("6").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("6").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("6").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("6").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%	
 	}else if(accHistory.get("6").get(i).get("ACC_INOUT").equals("출금")){
 %>
-      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("6").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("6").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("6").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("6").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%		
 	}
 %>         	
       	</tr>
       	<tr>
-      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=accHistory.get("6").get(i).get("ACC_BALANCE") %>원</td>
+      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=formatter.format(accHistory.get("6").get(i).get("ACC_BALANCE")) %>원</td>
       	</tr>
 <% 
 	}
@@ -429,17 +431,17 @@ if(accHistory.get("today").size()>0){
 <%
 	if(accHistory.get("today").get(i).get("ACC_INOUT").equals("입금")){
 %>		
-      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("today").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("today").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:blue;" colspan="2"><%=accHistory.get("today").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("today").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%	
 	}else if(accHistory.get("today").get(i).get("ACC_INOUT").equals("출금")){
 %>
-      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("today").get(i).get("ACC_INOUT") %>&nbsp;<%=accHistory.get("today").get(i).get("ACC_PRICE") %><s2>원</s2></td>
+      		<td style="text-align:right; color:red;" colspan="2"><%=accHistory.get("today").get(i).get("ACC_INOUT") %>&nbsp;<%=formatter.format(accHistory.get("today").get(i).get("ACC_PRICE")) %><s2>원</s2></td>
 <%		
 	}
 %>         	
       	</tr>
       	<tr>
-      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=accHistory.get("today").get(i).get("ACC_BALANCE") %>원</td>
+      		<td style="text-align:right; colspan="2">잔액&nbsp;<%=formatter.format(accHistory.get("today").get(i).get("ACC_BALANCE")) %>원</td>
       	</tr>
 <%
 	}
