@@ -242,60 +242,77 @@ $(document).ready(function(){
    <!-- 계좌이체 모달 끝  -->
     <!-- 카드 리스트 시작 -->
    <div class="container">
-      <div class="row">
-         <div class="col-12">
-            <div class="col-md-12">
-                     <h2>                  
-                     <br>
-                     <button type="button" class="btn" style="width:100%"><h4>계좌리스트</h4></button>         
-               </h2>
+		<div class="row">
+			<div class="col-12">
+				<div class="col-md-1"></div>
+				<div class="col-md-11">
+					<h3>
+							<br>
+            	<button type="button" class="btn" style="width:325px"><h4>계좌리스트</h4></button>
+                <br><br>
+                </h2>
                
 <%
    if(accountList!=null){
       for(int i=0;i<accountList.size();i++){
 %>
-               <div class="media "style="width: 100%; height: 100%">
-                  <div class="media-left">
-                     <a href="#"> <img class="media-object"
-                        src="/images/<%=accountList.get(i).get("ACC_BANK")%>.PNG" style="width: 250px; height: 150px">
-                     </a>
-                  </div>
-                  <div class="media-body">
-                     <form id="accList" name="accList" method="post"   action="accHistory?&acc_num=<%=accountList.get(i).get("ACC_NUM") %>">
-                        <table>
-                           <tr>
-                              <td id="p_acc_from" colspan="2"
-                                 style="color: #4374D9; font-size: 120%; background-color: #D8D8D8; ">&nbsp;<%=accountList.get(i).get("ACC_NUM") %></td>
-                           </tr>
-                           <tr>
-                              <td colspan="2">&nbsp;&nbsp;<%=accountList.get(i).get("ACC_BANK") %></td>
-                           </tr>
-                           <tr>
-                              <td colspan="2">&nbsp;&nbsp;<%=accountList.get(i).get("ACC_NAME") %></td>
-                           </tr>
-                           <tr>
-                              <td>&nbsp;&nbsp;최종거래일</td>
-                              <td style="text-align: right"><%=accountList.get(i).get("ACC_DATE") %></td>
-                           </tr>
-                           <tr>
-                              <td>&nbsp;&nbsp;잔액</td>
-                              <td style="text-align: right; color: blue;"><%=accountList.get(i).get("ACC_BALANCE") %><s2>원</s2></td>
-                           </tr>
-                           <tr>
-                              <td><button id="btn_acc_history" name="btn_acc_history"
-                                    type="submit" class="btn" style="width: 100px;border-color: #000000; background-color: #4374D9; color: #ffffff">거래내역</button></td>
-                              <td><button
-                                    id="btnn<%=accountList.get(i).get("ACC_NUM") %>"
-                                    name="btn_sendMoney" type="button" class="btn"
-                                    data-toggle="modal" data-target="#m_accounTransfer"
-                                    value="<%=accountList.get(i).get("ACC_NUM") %>"style="width: 100px; border-color: #000000; background-color: #4374D9; color: #ffffff">이체</button></td>
-                           <tr>
-                        </table>
-                     </form>
-                  </div>
-               </div>
+					<div class="media " >
+						<div class="media-left">
+							<form id="accList" name="accList" method="post"
+								action="accHistory?&acc_num=<%=accountList.get(i).get("ACC_NUM")%>">
+								<table style="width: 40%">
+									<tr>
+										<td >
+											<button id="btn_acc_history" name="btn_acc_history"
+												type="submit" class="btn" >
+												<img class="media-object"
+													src="/images/<%=accountList.get(i).get("ACC_BANK")%>.PNG"
+													style="width: 150px; height: 100px; border: 0;">
+											</button>
+										</td>
+									</tr>
+								</table>
+							</form>
+						</div>
+						<div class="media-body">
+							<form id="accList" name="accList" method="post"
+								action="accHistory?&acc_num=<%=accountList.get(i).get("ACC_NUM") %>">
+								<table>
+									<tr>
+										<td id="p_acc_from" colspan="2"
+											style="color: #4374D9; font-size: 120%; background-color: #D8D8D8;">&nbsp;<%=accountList.get(i).get("ACC_NUM") %></td>
+									</tr>
+									<tr>
+										<td colspan="2">&nbsp;&nbsp;<%=accountList.get(i).get("ACC_BANK") %></td>
+									</tr>
+									<tr>
+										<td colspan="2">&nbsp;&nbsp;<%=accountList.get(i).get("ACC_NAME") %></td>
+									</tr>
+									<tr>
+										<td>&nbsp;&nbsp;최종거래일</td>
+										<td style="text-align: right"><%=accountList.get(i).get("ACC_DATE") %></td>
+									</tr>
+									<tr>
+										<td>&nbsp;&nbsp;잔액</td>
+										<td style="text-align: right; color: blue;"><%=accountList.get(i).get("ACC_BALANCE") %><s2>원</s2></td>
+									</tr>
+									<tr>
+										<td><button id="btn_acc_history" name="btn_acc_history"
+												type="submit" class="btn"
+												style="width: 100px; border-color: #000000; background-color: #4374D9; color: #ffffff">거래내역</button></td>
+										<td><button
+												id="btnn<%=accountList.get(i).get("ACC_NUM") %>"
+												name="btn_sendMoney" type="button" class="btn"
+												data-toggle="modal" data-target="#m_accounTransfer"
+												value="<%=accountList.get(i).get("ACC_NUM") %>"
+												style="width: 100px; border-color: #000000; background-color: #4374D9; color: #ffffff">이체</button></td>
+									<tr>
+								</table>
+							</form>
+						</div>
+					</div>
 
-               <%         
+					<%         
       }
    }
 %>

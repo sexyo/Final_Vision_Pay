@@ -146,105 +146,131 @@ v_allcard.style.display = 'none';
       </div>
    </nav>
    <!-- 네비게이션 바 끝 -->
-	
 <!--카드리스트 시작 ^^!!  -->
-		<div class="container">
+	<div class="container">
 		<div class="row">
 			<div class="col-12">
-				<div class="col-md-1"></div>
-				<div class="col-md-11">
-					<h3>
-						<p>
-						<h3>
-						<p>
-					<button id="btn_useCard" name="btn_useCard" type="button" class="btn" style="width:150px">이번 달 사용카드</button></td>
-	             	<button id="btn_allCard" name="btn_allCard" type="button" class="btn" style="width:150px">나의 카드 목록</button></td>
-							<br>
-							<br>
-							<br>
-						</p>
-					</h3>
-<div id="use">
+				<div class="col-md-12">
+				    <h2>                  
+					<button id="btn_useCard" name="btn_useCard" type="button"
+						class="btn" style="width: 150px">이번 달 사용카드</button>
+					<button id="btn_allCard" name="btn_allCard" type="button"
+						class="btn" style="width: 150px">나의 카드 목록</button>
+					<br><br>
+					</h2>
+					<div id="use">
 <%
-	if(cardAllList!=null){
-		for(int i=0;i<cardAllList.size();i++){
+	if (cardAllList != null) {
+		for (int i = 0; i < cardAllList.size(); i++) {
 %>
-<div class="media">
-<div class="media-left">
-</div>
-<div class="media-body">
-<h4 class="media-heading"></h4>
-<form id="detail_card" name="detail_card" method="post" action="detail_card?card_num=<%=cardAllList.get(i).get("CARD_NUM") %>">
-<table style="width:40%">
-	 <td rowspan="3"><button type="submit" id="detail_card"  value="<%=cardAllList.get(i).get("CARD_NUM") %>"><img src="/images/<%=cardAllList.get(i).get("BIN_COMPANY") %>.png"  style="width: 150px; height: 100px; border:0; "></button>
-	 <td align=center colspan="2" style="color:orange; font-size:120%; background-color:grey">
-	         <%=cardAllList.get(i).get("BIN_NAME") %></td>
-	</tr>
-	<tr>
-		<td align=center style="color:orange; background-color:#D8D8D8" height="40px" colspan="2"><%=cardAllList.get(i).get("BIN_COMPANY")%></td>
-	</tr>
-	<tr>
-		<td colspan="2"  align=center>카드번호:&nbsp;&nbsp;<%=cardAllList.get(i).get("CARD_NUM") %></td>
- 	</tr> 
-	<tr>
-		<td colspan="2"  align=left>이번달 사용금액<%=cardAllList.get(i).get("PH_PRICE")%>원</td>
-	</tr>
-</table>
-</form>
-</div>
-</div>
-<%			
+						<div class="media">
+							<div class="media-left">
+								<form id="detail_card" name="detail_card" method="post"
+									action="detail_card?card_num=<%=cardAllList.get(i).get("CARD_NUM")%>">
+									<table style="width: 40%;">
+										<tr>
+											<td >
+												<button  class="btn" type="submit" id="detail_card"
+													"value="<%=cardAllList.get(i).get("CARD_NUM")%>" >
+													<img
+														src="/images/<%=cardAllList.get(i).get("BIN_COMPANY")%>.png"
+														style="width: 150px; height: 100px;">
+
+												</button>
+											</td>
+										</tr>
+									</table>
+								</form>
+							</div>
+							<div class="media-body">
+								<h4 class="media-heading"></h4>
+								<form id="detail_card" name="detail_card" method="post"
+									action="detail_card?card_num=<%=cardAllList.get(i).get("CARD_NUM") %>">
+									<table style="width: 40%">
+										<tr>
+										<td align=center colspan="2" style="color: #4374D9; font-size: 120%; background-color: #D8D8D8;">
+											<%=cardAllList.get(i).get("BIN_NAME") %></td>
+									    </tr>
+										<tr>
+											<td align=center
+												style="color: orange;"
+												height="40px" colspan="2"><%=cardAllList.get(i).get("BIN_COMPANY")%></td>
+										</tr>
+										<tr>
+											<td colspan="2" align=center>카드번호:&nbsp;&nbsp;<%=cardAllList.get(i).get("CARD_NUM") %></td>
+										</tr>
+										<tr>
+											<td>&nbsp;&nbsp;이달의 사용금액</td>
+											<td style="text-align: right; color: blue;">&nbsp;<%=cardAllList.get(i).get("PH_PRICE")%>원
+											</td>
+										</tr>
+										<tr>
+											<td >
+												<button  class="btn" type="submit" id="detail_card"
+													"value="<%=cardAllList.get(i).get("CARD_NUM")%>" style="width: 100px; border-color: #000000; background-color: #4374D9; color: #ffffff">거래내역
+												</button>
+											</td>
+										</tr>
+										
+									</table>
+								</form>
+							</div>
+						</div>
+						<%			
 		}
 	}
 %>
-</div>
+					</div>
 
-<div id="all">
-<%
+					<div id="all">
+						<%
 
 	if(allCard!=null){
 		for(int i=0;i<allCard.size();i++){
 %>
-<div class="media">
-<div class="media-left">
-</div>
-<div class="media-body">
-<h4 class="media-heading"></h4>
-<form id="all_card" name="all_card" method="post" action="../pay/payment?card_num=<%=allCard.get(i).get("CARD_NUM") %>&bin_company=<%=allCard.get(i).get("BIN_COMPANY") %>">
-<table style="width:40%">
-	<tr>
-	 <td rowspan="3"> <input type="image"  img src="/images/<%=allCard.get(i).get("BIN_COMPANY") %>.png" style="width: 150px; height: 100px" value="<%=allCard.get(i).get("CARD_NUM") %>">
-	 <td colspan="2" align=center style="color:orange; font-size:120%; background-color:grey">
-	 <%=allCard.get(i).get("BIN_NAME") %></td>
-	</tr>
-	<tr>
-		<td colspan="2" align=center style="color:orange; background-color:#D8D8D8" height="40px"><%=allCard.get(i).get("BIN_COMPANY") %></td>
-	</tr>
-	<tr>
-		<td colspan="2" align=center>카드번호:&nbsp;&nbsp;<%=allCard.get(i).get("CARD_NUM") %></td>
- 	</tr> 
-</table>
-</form>
-</div> 
-</div>
+						<div class="media">
+							<div class="media-left"></div>
+							<div class="media-body">
+								<h4 class="media-heading"></h4>
+								<form id="all_card" name="all_card" method="post"
+									action="../pay/payment?card_num=<%=allCard.get(i).get("CARD_NUM") %>&bin_company=<%=allCard.get(i).get("BIN_COMPANY") %>">
+									<table style="width: 40%">
+										<tr>
+											<td rowspan="3"><input type="image" img
+												src="/images/<%=allCard.get(i).get("BIN_COMPANY") %>.png"
+												style="width: 150px; height: 100px"
+												value="<%=allCard.get(i).get("CARD_NUM") %>">
+											<td colspan="2" align=center
+												style="color: orange; font-size: 120%; background-color: grey">
+												<%=allCard.get(i).get("BIN_NAME") %></td>
+										</tr>
+										<tr>
+											<td colspan="2" align=center
+												style="color: orange; background-color: #D8D8D8"
+												height="40px"><%=allCard.get(i).get("BIN_COMPANY") %></td>
+										</tr>
+										<tr>
+											<td colspan="2" align=center>카드번호:&nbsp;&nbsp;<%=allCard.get(i).get("CARD_NUM") %></td>
+										</tr>
+									</table>
+								</form>
+							</div>
+						</div>
 
-<%			
+						<%			
 		}
 	}
 %>
-</div>
-						</p>
+					</div>
+					</p>
 					</h3>
 				</div>
 			</div>
 		</div>
 		<hr>
 	</div>
-			
-<!--카드리스트 끗!!  -->
-	<!-- 네비게이션 바 시작 -->
-	<!-- 네비게이션 바 끝 -->
-	
+
+	<!--카드리스트 끗!!  -->
 	<!-- 푸터 시작 -->
 	<%@ include file="../include/footer.jsp" %>	
 	<!-- 푸터 끝 -->
