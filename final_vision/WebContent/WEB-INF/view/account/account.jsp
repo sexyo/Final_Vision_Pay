@@ -82,9 +82,6 @@ $(document).ready(function(){
                    if(data == 1){
                       alert("이체 완료");
                    }
-                   else if(data == -1){
-                      alert("이체에 실패하였습니다");
-                   }
                    else if(data == 2){
                       alert("잔액이 부족합니다");
                    }
@@ -248,7 +245,7 @@ $(document).ready(function(){
 				<div class="col-md-11">
 					<h3>
 							<br>
-            	<button type="button" class="btn" style="width:325px"><h4>계좌리스트</h4></button>
+            	<button type="button" class="btn" style="width:325px">계좌리스트</button>
                 <br><br>
                 </h2>
                
@@ -263,12 +260,10 @@ $(document).ready(function(){
 								<table style="width: 40%">
 									<tr>
 										<td >
-											<button id="btn_acc_history" name="btn_acc_history"
-												type="submit" class="btn" >
-												<img class="media-object"
-													src="/images/<%=accountList.get(i).get("ACC_BANK")%>.PNG"
-													style="width: 150px; height: 100px; border: 0;">
-											</button>
+										<input type="image" class="btn" id="btn_acc_history" img
+                                          src="/images/<%=accountList.get(i).get("ACC_BANK")%>.PNG"
+                                          style="width: 150px; height: 100px;">
+                                   		 </input>
 										</td>
 									</tr>
 								</table>
